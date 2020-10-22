@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="4.9.35" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="43896,5643635301" ReportOptions.Description.Text="" ReportOptions.LastChange="43896,5932963194" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C656674021803546F70023008446174617365747301010C3700000020446174615365743D22667278646264747374506572556E69742220446174615365744E616D653D2266727844424461746173657431220000095661726961626C65730100055374796C650100">
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" PaperWidth="215,9" PaperHeight="279,4" PaperSize="1" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" Height="71,81107" Left="0" Top="18,89765" Width="740,409927">
+      <TfrxMemoView Name="Memo1" Left="226,7718" Top="3,77953" Width="291,02381" Height="18,89765" ShowHint="False" Text="LAPORAN JUMLAH PASIEN PER UNIT RAWAT JALAN &#38; IGD"/>
+      <TfrxMemoView Name="Memo2" Left="7,55906" Top="37,7953" Width="94,48825" Height="18,89765" ShowHint="False" Text="UNIT"/>
+      <TfrxMemoView Name="Memo3" Left="230,55133" Top="37,7953" Width="94,48825" Height="18,89765" ShowHint="False" Text="JUMLAH"/>
+      <TfrxLineView Name="Line1" Left="0" Top="30,23624" Width="740,78788" Height="0" ShowHint="False" Diagonal="True"/>
+      <TfrxLineView Name="Line2" Left="0" Top="64,25201" Width="740,78788" Height="0" ShowHint="False" Diagonal="True"/>
+    </TfrxReportTitle>
+    <TfrxMasterData Name="MasterData1" Height="26,45671" Left="0" Top="151,1812" Width="740,409927" ColumnWidth="0" ColumnGap="0" DataSet="frxdbdtstPerUnit" DataSetName="frxDBDataset1" RowCount="0">
+      <TfrxMemoView Name="frxDBDataset1Jumlah" Left="230,55133" Top="3,77953" Width="120,94496" Height="18,89765" ShowHint="False" DataField="Jumlah" DataSet="frxdbdtstPerUnit" DataSetName="frxDBDataset1" Text="[frxDBDataset1.&#34;Jumlah&#34;]"/>
+      <TfrxMemoView Name="frxDBDataset1unit" Left="7,55906" Top="3,77953" Width="173,85838" Height="18,89765" ShowHint="False" DataField="unit" DataSet="frxdbdtstPerUnit" DataSetName="frxDBDataset1" Text="[frxDBDataset1.&#34;unit&#34;]"/>
+    </TfrxMasterData>
+  </TfrxReportPage>
+</TfrxReport>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="4.9.35" DataSet="frxdbdtstPasien" DataSetName="frxDBDatasetPasien" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Maximized="False" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="43774,4411541551" ReportOptions.Description.Text="" ReportOptions.LastChange="43878,5737201042" ScriptLanguage="PascalScript" ScriptText.Text="procedure Page1OnAfterPrint(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;&#13;&#10;end;&#13;&#10;&#13;&#10;begin&#13;&#10;&#13;&#10;end." PropData="044C65667403E10203546F7003520208446174617365747301010C3B00000020446174615365743D2266727864626474737450617369656E2220446174615365744E616D653D2266727844424461746173657450617369656E220000095661726961626C65730100055374796C650100">
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" Orientation="poLandscape" PaperWidth="89" PaperHeight="59" PaperSize="256" LeftMargin="2,5" RightMargin="2,5" TopMargin="2,5" BottomMargin="2,5" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="15" HGuides.Text="" VGuides.Text="" OnAfterPrint="Page1OnAfterPrint">
+    <TfrxMemoView Name="frxDBDatasetPasiennoRekamedis" Left="71,81107" Top="56,69295" Width="238,11039" Height="18,89765" ShowHint="False" DataSet="frxdbdtstPasien" DataSetName="frxDBDatasetPasien" Text=": [frxDBDatasetPasien.&#34;noRekamedis&#34;]"/>
+    <TfrxMemoView Name="frxDBDatasetPasiennmPasien" Left="71,81107" Top="75,5906" Width="400,63018" Height="18,89765" ShowHint="False" DataSet="frxdbdtstPasien" DataSetName="frxDBDatasetPasien" Text=": [frxDBDatasetPasien.&#34;nmPasien&#34;]"/>
+    <TfrxMemoView Name="frxDBDatasetPasientempatLahir" Left="71,81107" Top="94,48825" Width="400,63018" Height="18,89765" ShowHint="False" DataSet="frxdbdtstPasien" DataSetName="frxDBDatasetPasien" Text=": [frxDBDatasetPasien.&#34;tempatLahir&#34;], [frxDBDatasetPasien.&#34;tglLahir&#34;]"/>
+    <TfrxMemoView Name="frxDBDatasetPasienalamat" Left="71,81107" Top="113,3859" Width="249,44898" Height="86,92919" ShowHint="False" DataSet="frxdbdtstPasien" DataSetName="frxDBDatasetPasien" Text=": [frxDBDatasetPasien.&#34;alamat&#34;], [frxDBDatasetPasien.&#34;kecamatan&#34;],  [frxDBDatasetPasien.&#34;kelurahan&#34;],[frxDBDatasetPasien.&#34;kabupaten&#34;], [frxDBDatasetPasien.&#34;provinsi&#34;]"/>
+    <TfrxMemoView Name="Memo1" Left="3,77953" Top="56,69295" Width="94,48825" Height="18,89765" ShowHint="False" Text="NO RM"/>
+    <TfrxMemoView Name="Memo2" Left="3,77953" Top="75,5906" Width="94,48825" Height="18,89765" ShowHint="False" Text="NAMA"/>
+    <TfrxMemoView Name="Memo3" Left="3,77953" Top="94,48825" Width="49,13389" Height="18,89765" ShowHint="False" Text="TTL"/>
+    <TfrxMemoView Name="Memo4" Left="3,77953" Top="117,16543" Width="94,48825" Height="18,89765" ShowHint="False" Text="ALAMAT"/>
+    <TfrxMemoView Name="Memo5" Left="105,82684" Top="0" Width="102,04731" Height="15,11812" ShowHint="False" Text="KARTU PASIEN"/>
+    <TfrxMemoView Name="Memo6" Left="49,13389" Top="15,11812" Width="222,99227" Height="18,89765" ShowHint="False" Text="RUMAH SAKIT KARSA HUSADA BATU"/>
+  </TfrxReportPage>
+</TfrxReport>

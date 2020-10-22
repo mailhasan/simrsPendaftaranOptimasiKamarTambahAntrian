@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="4.9.35" DataSet="frxdbdtstKarcis" DataSetName="frxDBDataset1" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Maximized="False" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="43775,4095897685" ReportOptions.Description.Text="" ReportOptions.LastChange="43889,4410314815" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403590303546F70035A0208446174617365747301010C3600000020446174615365743D226672786462647473744B61726369732220446174615365744E616D653D2266727844424461746173657431220000095661726961626C65730100055374796C650100">
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" PaperWidth="100" PaperHeight="120" PaperSize="256" LeftMargin="2,5" RightMargin="2,5" TopMargin="2,5" BottomMargin="2,5" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxMemoView Name="Memo1" Left="98,26778" Top="3,77953" Width="147,40167" Height="18,89765" ShowHint="False" Text="RUMAH SAKIT KARSA HUSADA BATU"/>
+    <TfrxMemoView Name="Memo2" Left="71,81107" Top="18,89765" Width="207,87415" Height="18,89765" ShowHint="False" Text="Jl. Jendral Ahmad Yani No. 10-13 BATU"/>
+    <TfrxMemoView Name="Memo3" Left="64,25201" Top="34,01577" Width="234,33086" Height="18,89765" ShowHint="False" Text="Telp.(0341) 596898, 591076, 591036 "/>
+    <TfrxLineView Name="Line1" Left="0" Top="52,91342" Width="377,953" Height="0" ShowHint="False" Diagonal="True"/>
+    <TfrxMemoView Name="Memo4" Left="0" Top="60,47248" Width="64,25201" Height="18,89765" ShowHint="False" Text="NO RM"/>
+    <TfrxMemoView Name="Memo5" Left="0" Top="83,14966" Width="94,48825" Height="18,89765" ShowHint="False" Text="NAMA"/>
+    <TfrxMemoView Name="Memo6" Left="0" Top="109,60637" Width="94,48825" Height="18,89765" ShowHint="False" Text="TTL"/>
+    <TfrxMemoView Name="Memo7" Left="0" Top="136,06308" Width="94,48825" Height="18,89765" ShowHint="False" Text="ALAMAT"/>
+    <TfrxMemoView Name="frxDBDataset1noRekamedis" Left="113,3859" Top="60,47248" Width="238,11039" Height="18,89765" ShowHint="False" DataSet="frxdbdtstKarcis" DataSetName="frxDBDataset1" Text=": [frxDBDataset1.&#34;noRekamedis&#34;]"/>
+    <TfrxMemoView Name="frxDBDataset1nmPasien" Left="113,3859" Top="83,14966" Width="400,63018" Height="18,89765" ShowHint="False" DataSet="frxdbdtstKarcis" DataSetName="frxDBDataset1" Text=": [frxDBDataset1.&#34;nmPasien&#34;]"/>
+    <TfrxMemoView Name="frxDBDataset1tempatLahir" Left="113,3859" Top="109,60637" Width="400,63018" Height="18,89765" ShowHint="False" DataSet="frxdbdtstKarcis" DataSetName="frxDBDataset1" Text=": [frxDBDataset1.&#34;tempatLahir&#34;], [frxDBDataset1.&#34;tglLahir&#34;]"/>
+    <TfrxMemoView Name="frxDBDataset1alamat" Left="113,3859" Top="136,06308" Width="245,66945" Height="56,69295" ShowHint="False" DataSet="frxdbdtstKarcis" DataSetName="frxDBDataset1" Text=": [frxDBDataset1.&#34;alamat&#34;]"/>
+    <TfrxMemoView Name="frxDBDataset1asalPasien" Left="113,3859" Top="207,87415" Width="400,63018" Height="18,89765" ShowHint="False" DataSet="frxdbdtstKarcis" DataSetName="frxDBDataset1" Text=": [frxDBDataset1.&#34;asalPasien&#34;]"/>
+    <TfrxMemoView Name="Memo8" Left="0" Top="207,87415" Width="94,48825" Height="18,89765" ShowHint="False" Text="ASAL PASIEN"/>
+    <TfrxMemoView Name="Memo9" Left="0" Top="230,55133" Width="94,48825" Height="18,89765" ShowHint="False" Text="CARA BAYAR"/>
+    <TfrxMemoView Name="frxDBDataset1carabayar" Left="113,3859" Top="230,55133" Width="400,63018" Height="18,89765" ShowHint="False" DataSet="frxdbdtstKarcis" DataSetName="frxDBDataset1" Text=": [frxDBDataset1.&#34;carabayar&#34;]"/>
+    <TfrxMemoView Name="frxDBDataset1unit" Left="113,3859" Top="253,22851" Width="400,63018" Height="18,89765" ShowHint="False" DataSet="frxdbdtstKarcis" DataSetName="frxDBDataset1" Text=": [frxDBDataset1.&#34;unit&#34;]"/>
+    <TfrxMemoView Name="Memo10" Left="0" Top="249,44898" Width="94,48825" Height="18,89765" ShowHint="False" Text="POLI"/>
+    <TfrxMemoView Name="frxDBDataset1namapetugasMedis" Left="113,3859" Top="279,68522" Width="400,63018" Height="18,89765" ShowHint="False" DataSet="frxdbdtstKarcis" DataSetName="frxDBDataset1" Text=": [frxDBDataset1.&#34;namapetugasMedis&#34;]"/>
+    <TfrxMemoView Name="Memo11" Left="0" Top="279,68522" Width="94,48825" Height="18,89765" ShowHint="False" Text="DOKTER"/>
+    <TfrxMemoView Name="Memo12" Left="0" Top="302,3624" Width="113,3859" Height="41,57483" ShowHint="False" Text="KARCIS PENDAFTARAN"/>
+    <TfrxMemoView Name="frxDBDataset1karciPendaftaran" Left="117,16543" Top="321,26005" Width="79,37013" Height="18,89765" ShowHint="False" DataSet="frxdbdtstKarcis" DataSetName="frxDBDataset1" Text=": RP.[frxDBDataset1.&#34;karciPendaftaran&#34;]"/>
+    <TfrxMemoView Name="Memo13" Left="0" Top="336,37817" Width="94,48825" Height="34,01577" ShowHint="False" Text="KONSUL DOKTER"/>
+    <TfrxMemoView Name="frxDBDataset1konsulDokter" Left="113,3859" Top="351,49629" Width="79,37013" Height="18,89765" ShowHint="False" DataSet="frxdbdtstKarcis" DataSetName="frxDBDataset1" Text=": RP.[frxDBDataset1.&#34;konsulDokter&#34;]"/>
+    <TfrxMemoView Name="Memo14" Left="0" Top="381,73253" Width="94,48825" Height="18,89765" ShowHint="False" Text="TOTAL "/>
+    <TfrxMemoView Name="Memo15" Left="113,3859" Top="381,73253" Width="94,48825" Height="18,89765" ShowHint="False" Text=": RP.[&#60;frxDBDataset1.&#34;karciPendaftaran&#34;&#62;+&#60;frxDBDataset1.&#34;konsulDokter&#34;&#62;]"/>
+    <TfrxLineView Name="Line2" Left="3,77953" Top="302,3624" Width="336,37817" Height="0" ShowHint="False" Diagonal="True"/>
+    <TfrxMemoView Name="frxDBDataset1tglDaftar" Left="113,3859" Top="173,85838" Width="166,29932" Height="18,89765" ShowHint="False" DataSet="frxdbdtstKarcis" DataSetName="frxDBDataset1" Text=": [frxDBDataset1.&#34;tglDaftar&#34;]"/>
+    <TfrxMemoView Name="Memo16" Left="0" Top="170,07885" Width="98,26778" Height="34,01577" ShowHint="False" Text="TGL/JAM DAFTAR"/>
+  </TfrxReportPage>
+</TfrxReport>

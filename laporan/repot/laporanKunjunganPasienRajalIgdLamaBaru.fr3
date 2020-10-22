@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="4.9.35" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="43899,5071445602" ReportOptions.Description.Text="" ReportOptions.LastChange="43902,6767510417" ScriptLanguage="PascalScript" ScriptText.Text="procedure Button1OnClick(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;                                                                                                                  &#13;&#10;end;&#13;&#10;&#13;&#10;procedure Button2OnClick(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;&#13;&#10;end;&#13;&#10;&#13;&#10;begin&#13;&#10;                                                                        &#13;&#10;end." PropData="044C65667403C80103546F7003000108446174617365747301010C2C00000020446174615365743D2241444F5175657279312220446174615365744E616D653D2241444F517565727931220000095661726961626C65730100055374796C650100">
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000">
+    <TfrxADODatabase Name="ADODatabase1" DatabaseName="Provider=MSDASQL.1;Persist Security Info=False;Data Source=simrs;Initial Catalog=simrs;" LoginPrompt="False" Connected="True" PropData="05704C656674024C0470546F700258"/>
+    <TfrxADOQuery Name="ADOQuery1" UserName="ADOQuery1" CloseDataSource="True" FieldAliases.Text="" BCDToCurrency="False" IgnoreDupParams="False" SQL.Text="SELECT COUNT(noDaftar) AS jumlah, SUM(laki AND baru) AS jmlLakiBaru, SUM(laki AND lama) AS jmlLakiLama, &#13;&#10;SUM(Perempuan AND baru) AS jmlPerempuanBaru, SUM(Perempuan AND lama) AS jmlPerempuanlama, unit&#13;&#10;FROM vw_kunjuganlamabarupasienrajaligd where tglDaftar BETWEEN :tgl AND :tgl1           &#13;&#10;GROUP BY unit    " CommandTimeout="30" Database="ADODatabase1" LockType="ltReadOnly" PropData="05704C6566740390000470546F7003B4000A506172616D657465727301010C39000000204E616D653D2274676C222044617461547970653D22667444617465222045787072657373696F6E3D224461746545646974312E646174652200010C3A000000204E616D653D2274676C31222044617461547970653D22667444617465222045787072657373696F6E3D224461746545646974322E64617465220000"/>
+  </TfrxDataPage>
+  <TfrxReportPage Name="Page1" PaperWidth="215,9" PaperHeight="279,4" PaperSize="1" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" Height="94,48825" Left="0" Top="18,89765" Width="740,409927">
+      <TfrxMemoView Name="Memo1" Left="207,87415" Top="3,77953" Width="366,61441" Height="18,89765" ShowHint="False" Text="LAPORAN KUJUNGAN PASIEN LAMA/BARU | RAJAL/IGD"/>
+      <TfrxLineView Name="Line1" Left="0" Top="68,03154" Width="744,56741" Height="0" ShowHint="False" Diagonal="True"/>
+      <TfrxMemoView Name="Memo2" Left="7,55906" Top="45,35436" Width="94,48825" Height="18,89765" ShowHint="False" Text="UNIT"/>
+      <TfrxMemoView Name="Memo3" Left="222,99227" Top="34,01577" Width="94,48825" Height="30,23624" ShowHint="False" Text="LAKI - LAKI&#13;&#10;BARU | LAMA"/>
+      <TfrxMemoView Name="Memo4" Left="340,1577" Top="34,01577" Width="94,48825" Height="30,23624" ShowHint="False" Text="PEREMPUAN&#13;&#10;BARU | LAMA"/>
+      <TfrxMemoView Name="Memo5" Left="529,1342" Top="45,35436" Width="94,48825" Height="15,11812" ShowHint="False" Text="TOTAL"/>
+      <TfrxMemoView Name="Memo6" Left="7,55906" Top="71,81107" Width="94,48825" Height="18,89765" ShowHint="False" Text="[DateEdit1.value]"/>
+    </TfrxReportTitle>
+    <TfrxMasterData Name="MasterData1" Height="22,67718" Left="0" Top="173,85838" Width="740,409927" ColumnWidth="0" ColumnGap="0" DataSet="ADOQuery1" DataSetName="ADOQuery1" RowCount="0">
+      <TfrxMemoView Name="ADOQuery1unit" Left="7,55906" Top="3,77953" Width="400,63018" Height="18,89765" ShowHint="False" DataField="unit" DataSet="ADOQuery1" DataSetName="ADOQuery1" Text="[ADOQuery1.&#34;unit&#34;]"/>
+      <TfrxMemoView Name="ADOQuery1jumlah" Left="529,1342" Top="3,77953" Width="120,94496" Height="18,89765" ShowHint="False" DataField="jumlah" DataSet="ADOQuery1" DataSetName="ADOQuery1" Text="[ADOQuery1.&#34;jumlah&#34;]"/>
+      <TfrxMemoView Name="ADOQuery1jmlLakiBaru" Left="226,7718" Top="3,77953" Width="79,37013" Height="18,89765" ShowHint="False" DataField="jmlLakiBaru" DataSet="ADOQuery1" DataSetName="ADOQuery1" Text="[ADOQuery1.&#34;jmlLakiBaru&#34;]"/>
+      <TfrxMemoView Name="ADOQuery1jmlLakiLama" Left="275,90569" Top="3,77953" Width="79,37013" Height="18,89765" ShowHint="False" DataField="jmlLakiLama" DataSet="ADOQuery1" DataSetName="ADOQuery1" Text="[ADOQuery1.&#34;jmlLakiLama&#34;]"/>
+      <TfrxMemoView Name="ADOQuery1jmlPerempuanBaru" Left="343,93723" Top="3,77953" Width="79,37013" Height="18,89765" ShowHint="False" DataField="jmlPerempuanBaru" DataSet="ADOQuery1" DataSetName="ADOQuery1" Text="[ADOQuery1.&#34;jmlPerempuanBaru&#34;]"/>
+      <TfrxMemoView Name="ADOQuery1jmlPerempuanlama" Left="393,07112" Top="3,77953" Width="79,37013" Height="18,89765" ShowHint="False" DataField="jmlPerempuanlama" DataSet="ADOQuery1" DataSetName="ADOQuery1" Text="[ADOQuery1.&#34;jmlPerempuanlama&#34;]"/>
+    </TfrxMasterData>
+  </TfrxReportPage>
+  <TfrxDialogPage Name="DialogPage1" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Tahoma" Font.Style="0" Height="180" ClientHeight="141" Left="335" Top="137" Width="213" ClientWidth="197">
+    <TfrxDateEditControl Name="DateEdit1" Left="16" Top="8" Width="145" Height="21" ShowHint="True" Color="-16777211" Date="43902,6246507176" Time="43902,6246507176"/>
+    <TfrxDateEditControl Name="DateEdit2" Left="16" Top="44" Width="145" Height="21" ShowHint="True" Color="-16777211" Date="43902,6246996991" Time="43902,6246996991"/>
+    <TfrxButtonControl Name="Button1" Left="16" Top="72" Width="143" Height="25" ShowHint="True" Caption="TAMPIL" ModalResult="1" OnClick="Button1OnClick"/>
+    <TfrxButtonControl Name="Button2" Left="16" Top="108" Width="143" Height="25" ShowHint="True" Caption="BATAL" ModalResult="2"/>
+  </TfrxDialogPage>
+</TfrxReport>
