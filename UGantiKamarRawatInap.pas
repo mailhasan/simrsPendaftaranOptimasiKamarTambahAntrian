@@ -72,7 +72,7 @@ var
 
 implementation
 
-uses UDataSImrs,UDaftarDataPasienHariIniRanap,UKelas, ADODB, DB;
+uses UDataSImrs,UDaftarDataPasienHariIniRanap,UKelas, ADODB, DB, DateUtils;
 
 {$R *.dfm}
 
@@ -125,13 +125,23 @@ if Key=#13 then
 end;
 
 procedure TFGantiKamarRawatInap.btnGantiDataKamarClick(Sender: TObject);
+var
+  noDaftarRanap,tglDaftar,jamSelisih:String;
+  jamDaftar,jamSekarang:TDateTime;
+  sec, jam, menit, detik : word;
+  h, m, s : word;
+  inc : word;
+  Selisih : String;
+  Itime : TTime;
 begin
+/// pengujian status kamar kosong
 if edtStatusKamarGanti.Text = '' then
   begin
     ShowMessage('Status Kamar Ganti Tidak Kosong...!');
   end
   else
   begin
+    /// pengujian status kamar
     if (edtStatusKamarGanti.Text = 'Dipesan Pasien') or (edtStatusKamarGanti.Text='Rusak') or
             (edtStatusKamarGanti.Text='Diperbaiki') or (edtStatusKamarGanti.Text='Dibersihkan')
             or (edtStatusKamarGanti.Text='Ditempati Pasien') then
@@ -139,18 +149,22 @@ if edtStatusKamarGanti.Text = '' then
     else
 
     begin
-        with DataSimrs.qryvw_datarawatinap do
+         /// membaca data kamar di database yang statusnya di tempati
+         with DataSimrs.qryvw_datarawatinap do
          begin
            Close;
            SQL.Clear;
            SQL.Text := 'select * from vw_datarawatinap where kdTarifKelasKmr="'+edtKdRawatInapGanti.Text+'" AND statusBed="Ditempati Pasien" ';
            Open;
          end;
-         
+
+         /// pengujian data kamar yang di tempati ada di database
          if (DataSimrs.qryvw_datarawatinap.FieldByName('kdTarifKelasKmr').AsString = edtKdRawatInapGanti.Text)
             and (DataSimrs.qryvw_datarawatinap.FieldByName('statusBed').AsString ='Ditempati Pasien') then
          begin
           MessageDlg('Kamar Sudah Lebih Dahulu Ditempati Pasien..!!',mtWarning,[mbok],0);
+
+          /// refresh data kamar rawat inap
           with DataSimrs.qryvw_datarawatinap do
            begin
             Close;
@@ -174,6 +188,48 @@ if edtStatusKamarGanti.Text = '' then
             MessageDlg('Pasien Sudah Mendapatkan Pelayanan Di Ruangan Silahkan Pindah Pasien Dari Ruangan',mtInformation,[mbOK],0)
           else
           begin
+
+            //// query pengujian lebih dari 3 jam
+            with DataSimrs.qryPasienRanapLebih3jam do
+            begin
+              Close;
+              SQL.Clear;
+              SQL.Text := 'SELECT '+
+                              'noDaftarRawatInap,'+
+                              'tglMasukRawatInap,'+
+                              'DATE(tglMasukRawatInap) AS tanggal,'+
+                              'TIME(tglMasukRawatInap) AS jam FROM t_registrasirawatinap where noDaftarRawatInap="'+lbl1.Caption+'"';
+              Open;
+            end;
+
+            noDaftarRanap := DataSimrs.qryPasienRanapLebih3jam['noDaftarRawatInap'];
+            tglDaftar := FormatDateTime('yyyy-MM-dd',DataSimrs.qryPasienRanapLebih3jam['tanggal']);
+            jamDaftar := StrToTime(FormatDateTime('t',DataSimrs.qryPasienRanapLebih3jam['jam']));
+            jamSekarang := Now;
+            jamSelisih := TimeToStr(jamDaftar-jamSekarang);
+            jamDaftar := StrToTime(jamSelisih);
+
+            h := HourOf(jamDaftar);
+            m := MinuteOf(jamDaftar);
+            s := SecondOf(jamDaftar);
+            inc := (h*sqr(60)+(m*60)+s);
+            //
+            Itime := Now();
+            Itime := IncSecond(Itime,inc);
+            //
+            sec := SecondsBetween(Now(),Itime);
+            jam := sec div 3600;
+            menit := (sec mod 3600) div 60;
+            detik := (sec mod 3600) mod 60;
+            //
+
+            //ShowMessage(tglDaftar + IntToStr(jam));
+            if (noDaftarRanap=lbl1.Caption) and (tglDaftar=FormatDateTime('yyyy-MM-dd',Now)) and (IntToStr(jam)>IntToStr(3)) then
+                MessageDlg('Data Kamar Pasien tidak bisa di ganti, pasien Telah Terdaftar 4 jam yang lalu',mtWarning,[mbOK],0)
+            else
+            /// update di tabel t_registrasirawatinap
+            begin
+
             with DataSimrs.qryt_registrasirawatinap do
             begin
               Close;
@@ -185,6 +241,7 @@ if edtStatusKamarGanti.Text = '' then
               SQL.Text := 'select * from t_registrasirawatinap';
               Open;
             end;
+
             /// update kamar sebelumnya
             with DataSimrs.qryvw_datarawatinap do
             begin
@@ -210,6 +267,7 @@ if edtStatusKamarGanti.Text = '' then
             MessageDlg('Kamar Berhasil Di Ganti..!!',mtInformation,[mbok],0);
 
             FDaftarDataPasienRanap.tampilpasienhariini;
+            end;
 
           end;
           end;

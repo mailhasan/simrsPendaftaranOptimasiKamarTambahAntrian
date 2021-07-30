@@ -91,6 +91,9 @@ type
     strngrdTempatLahir: TStringGrid;
     cxlblPencarianKelurahan: TcxLabel;
     edtPencarianKelurahan: TcxTextEdit;
+    lblDataLengkap: TLabel;
+    lbl3: TLabel;
+    cbbMaritalStatus: TcxLookupComboBox;
     /// procedure tambahan
     procedure AngkaSaja(Sender: TObject; var Key: Char);
     procedure HurufSaja(Sender: TObject; var Key: Char);
@@ -145,6 +148,7 @@ type
     procedure edtPencarianKelurahanPropertiesChange(Sender: TObject);
     procedure strngrdTempatLahirSelectCell(Sender: TObject; ACol,
       ARow: Integer; var CanSelect: Boolean);
+    procedure cbbMaritalStatusKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -214,8 +218,9 @@ begin
   dtpTglLahir.Date := Now;
   edtTahun.Text := '';
   cbbJenisKelamin.Text := '';
-   cbbPendidikan.EditValue := 'p1';
+  cbbPendidikan.EditValue := 'p1';
   cbbPekerjaan.Text := '';
+  cbbMaritalStatus.Text := '';
   cxmAlamat.Clear;
   cbbBahasa.Text := '';
   edtKodePos.Clear;
@@ -390,15 +395,23 @@ var
   tglLahir,tgldaftar,Nourut : String;
   i:Integer;
 begin
-if (edtNoIdentitas.Text='0') or (edtNmLengkap.Text='') or (edtTempatLahir.Text='') or (cbbJenisKelamin.Text='') or
-   (cbbCaraBayar.Text='') or (cbbPenjamin.Text='') then
-      MessageDlg('Data Di Lengkapi...!',mtWarning,[mbok],0)
+if (edtNoIdentitas.Text='0') then
+    MessageDlg('No Identitas Wajib Di Isi...!',mtWarning,[mbOK],0)
+else if (edtNmLengkap.Text='') then
+    MessageDlg('Nama Lengkap Wajib Di Isi...!',mtWarning,[mbOK],0)
+else if (edtTempatLahir.Text='') then
+     MessageDlg('Tempat Lahir Wajib Di Isi...!',mtWarning,[mbOK],0)
+else if (cbbJenisKelamin.Text='') then
+    MessageDlg('Jenis Kelamin Wajib Di Isi...!',mtWarning,[mbOK],0)
+else if (cbbCaraBayar.Text='') or (cbbPenjamin.Text='') then
+      MessageDlg('Cara Bayar/Penjamin Wajib Di Isi...!',mtWarning,[mbok],0)
     else
     begin
       /// proses data pasien IGD
         tglLahir := FormatDateTime('yyyy-MM-dd',dtpTglLahir.Date);
         tgldaftar := FormatDateTime('yyyy-MM-dd hh:nn:ss',Now);
 
+        /// refresh no rekamedis
          with DataSimrs.qryNoRmPasien do
         begin
          Close;
@@ -406,13 +419,13 @@ if (edtNoIdentitas.Text='0') or (edtNmLengkap.Text='') or (edtTempatLahir.Text='
          SQL.Text := 'select * from normpasien';
          Open;
         end;
-        
+
         //no rekamedis pasien
          if DataSimrs.qryNoRmPasien.Fields[0].AsString = '' then
           Nourut := '00000001'
         else
         if DataSimrs.qryNoRmPasien.Fields[0].AsString = '99999999' then
-          MessageDlg('Data Hari Ini Sudah over Besok aza lagi ya !!',mtError,[mbOK],0)
+          MessageDlg('Data RM Ini Sudah  !!',mtError,[mbOK],0)
         else
           Nourut := IntToStr(DataSimrs.qryNoRmPasien.Fields[0].AsInteger + 1);
         if length(Nourut) < 8 then
@@ -421,14 +434,14 @@ if (edtNoIdentitas.Text='0') or (edtNmLengkap.Text='') or (edtTempatLahir.Text='
             Nourut := '0' + Nourut;
         end;
 
-
+       /// insert into tabel pasien
         with DataSimrs.qryVwPasien do
         begin
           Close;
           SQL.Clear;
           SQL.Text := 'insert into t_pasien (noRekamedis,nmPasien,tempatLahir,tglLahir,jenisKelamin,agama,alamat,pendidikan,'+
                       'pekerjaan,kelurahan,kecamatan,kabupaten,provinsi,kdPos,bahasa,noKtp,tglDaftar,caraBayar,'+
-                      'penjamin,noKartuPenjamin,noSepPenjamin,atasNamaPenjamin,noTelepone,noIdentitasKtp,createDate,username,pengguna)'+
+                      'penjamin,noKartuPenjamin,noSepPenjamin,atasNamaPenjamin,noTelepone,noIdentitasKtp,createDate,username,pengguna,maritalStatus)'+
                       'values ("'+Nourut+'","'+edtNmLengkap.Text+'","'+edtTempatLahir.Text+'","'+tglLahir+'",'+
                       '"'+cbbJenisKelamin.Text+'","'+cbbAgama.Text+'","'+cxmAlamat.Text+'","'+cbbPendidikan.Text+'",'+
                       '"'+cbbPekerjaan.Text+'","'+edtKelurahanDesa.Text+'","'+cxtxtdtKecamatanNew.Text+'",'+
@@ -436,14 +449,16 @@ if (edtNoIdentitas.Text='0') or (edtNmLengkap.Text='') or (edtTempatLahir.Text='
                       '"'+cbbBahasa.Text+'","'+edtNoIdentitas.Text+'","'+tgldaftar+'",'+
                       '"'+cbbCaraBayar.Text+'","'+cbbPenjamin.Text+'","'+edtNoKartu.Text+'","'+edtNoSep.Text+'",'+
                       '"'+edtAtasNama.Text+'","'+cxcrncydtNoTelp.Text+'","'+edtNoIdentitas.Text+'",'+
-                      '"'+FormatDateTime('yyyy-mm-dd hh:mm:ss',Now)+'","'+FPendaftaran.statSimrs.Panels[0].Text+'","'+FPendaftaran.statSimrs.Panels[3].Text+'")';
+                      '"'+FormatDateTime('yyyy-mm-dd hh:mm:ss',Now)+'","'+FPendaftaran.statSimrs.Panels[0].Text+'","'+FPendaftaran.statSimrs.Panels[3].Text+'","'+cbbMaritalStatus.Text+'")';
           ExecSQL;
           SQL.Text:='select noRekamedis from t_pasien';
           Open;
         end;
 
+        /// pengujian data t_detailpasien
         if DataSimrs.qryDetailPasien.Locate('noRekamedis',Nourut,[]) then
          begin
+          /// update detail pasien
           with DataSimrs.qryDetailPasien do
           begin
             Close;
@@ -497,6 +512,7 @@ if (edtNoIdentitas.Text='0') or (edtNmLengkap.Text='') or (edtTempatLahir.Text='
         FPendaftaranPasienRawatInap.edtJkUgd.Text := cbbJenisKelamin.Text;
         FPendaftaranPasienRawatInap.edtPendidikanUgd.Text := cbbPendidikan.Text;
         FPendaftaranPasienRawatInap.edtPekerjaanUgd.Text := cbbPekerjaan.Text;
+        FPendaftaranPasienRawatInap.edtMaritalStatuUgd.Text := cbbMaritalStatus.Text;
         FPendaftaranPasienRawatInap.mmoAlamatUgd.Text := cxmAlamat.Text;
         FPendaftaranPasienRawatInap.edtKelurahanUgd.Text := edtKelurahanDesa.Text;
         FPendaftaranPasienRawatInap.edtKecamatanUgd.Text := cxtxtdtKecamatanNew.Text;
@@ -634,7 +650,7 @@ begin
 IF Key=#13 then
   begin
   key:=#0;
-  cxmAlamat.SetFocus;
+  cbbMaritalStatus.SetFocus;
   end
 end;
 
@@ -924,6 +940,16 @@ procedure TFDataPasienBaruIgd.strngrdTempatLahirSelectCell(Sender: TObject;
   ACol, ARow: Integer; var CanSelect: Boolean);
 begin
 edtTempatLahir.Text := strngrdTempatLahir.Cells[1,Arow];
+end;
+
+procedure TFDataPasienBaruIgd.cbbMaritalStatusKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+IF Key=#13 then
+  begin
+  key:=#0;
+  cxmAlamat.SetFocus;
+  end
 end;
 
 end.

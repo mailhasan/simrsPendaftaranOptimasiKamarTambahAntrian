@@ -34,6 +34,8 @@ type
     pnlBawah: TPanel;
     btnSimpan: TcxButton;
     pnlAtas: TPanel;
+    cxlblPrinterGelangPerempuan: TcxLabel;
+    cbbPrinterGelangPerempuan: TComboBox;
     procedure FormShow(Sender: TObject);
     procedure btnSimpanClick(Sender: TObject);
   private
@@ -74,6 +76,7 @@ begin
   SetLength(Result, iLen);
 end;
 
+/// menampilkan printer yang terinstal di pc
 function GetCurrentPrinterHandle: THandle;
 var
   Device, Driver, Port: array[0..255] of Char;
@@ -104,6 +107,7 @@ begin
       cbbPrinterGelang.Text := DataSimrs.qryt_komputer.FieldByName('printerGelang').AsString;
       cbbPrinterLabel.Text := DataSimrs.qryt_komputer.FieldByName('printerLabel').AsString;
       cbbPrinterKarcis.Text := DataSimrs.qryt_komputer.FieldByName('printerKarcis').AsString;
+      cbbPrinterGelangPerempuan.Text := DataSimrs.qryt_komputer.FieldByName('PrinterGelangPerempuan').AsString;
     end
     else
     begin
@@ -112,17 +116,21 @@ begin
       cbbPrinterGelang.Text := '';
       cbbPrinterLabel.Text := '';
       cbbPrinterKarcis.Text := '';
+      cbbPrinterGelangPerempuan.Text := '';
     end;
 end;
 
 
 procedure TFSettingPrinter.FormShow(Sender: TObject);
 begin
+  /// menampilkan procedure awal
   awal;
+  /// menampilkan procedure printer pada combo box
   cbbPrinterKartu.Items.Assign(Printer.Printers);
   cbbPrinterGelang.Items.Assign(Printer.Printers);
   cbbPrinterLabel.Items.Assign(Printer.Printers);
   cbbPrinterKarcis.Items.Assign(Printer.Printers);
+  cbbPrinterGelangPerempuan.Items.Assign(printer.Printers);
 end;
 
 procedure TFSettingPrinter.btnSimpanClick(Sender: TObject);
@@ -142,7 +150,8 @@ begin
            FieldByName('printerGelang').AsString := cbbPrinterGelang.Text;
            FieldByName('printerLabel').AsString := cbbPrinterLabel.Text;
            FieldByName('printerKarcis').AsString := cbbPrinterKarcis.Text;
-          Post;  
+           FieldByName('PrinterGelangPerempuan').AsString := cbbPrinterGelangPerempuan.Text;
+          Post;
          end;
          MessageDlg('Data Berhasil disimpan!',mtInformation,[mbok],0);
 
@@ -157,6 +166,7 @@ begin
            FieldByName('printerGelang').AsString := cbbPrinterGelang.Text;
            FieldByName('printerLabel').AsString := cbbPrinterLabel.Text;
            FieldByName('printerKarcis').AsString := cbbPrinterKarcis.Text;
+           FieldByName('PrinterGelangPerempuan').AsString := cbbPrinterGelangPerempuan.Text;
            Post;
           end;
           MessageDlg('Data Berhasil disimpan!',mtInformation,[mbok],0);

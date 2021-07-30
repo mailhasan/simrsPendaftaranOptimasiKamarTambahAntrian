@@ -34,7 +34,6 @@ type
     edtNoRm: TEdit;
     tsLab: TTabSheet;
     tsRadiologi: TTabSheet;
-    tsRawatJalanLama: TTabSheet;
     procedure pnlKeluarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);

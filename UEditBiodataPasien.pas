@@ -64,6 +64,8 @@ type
     strngrdKecamatan: TStringGrid;
     strngrdKabKota: TStringGrid;
     strngrdProvinsi: TStringGrid;
+    lbl3: TLabel;
+    cbbMaritalStatus: TcxLookupComboBox;
     procedure btnSimpanClick(Sender: TObject);
     procedure pnlKeluarClick(Sender: TObject);
     procedure edtKeluarahanChange(Sender: TObject);
@@ -89,6 +91,14 @@ type
     procedure strngrdKecamatanKeyPress(Sender: TObject; var Key: Char);
     procedure strngrdProvinsiDblClick(Sender: TObject);
     procedure strngrdProvinsiKeyPress(Sender: TObject; var Key: Char);
+    procedure strngrdDesaSelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
+    procedure strngrdKecamatanSelectCell(Sender: TObject; ACol,
+      ARow: Integer; var CanSelect: Boolean);
+    procedure strngrdKabKotaSelectCell(Sender: TObject; ACol,
+      ARow: Integer; var CanSelect: Boolean);
+    procedure strngrdProvinsiSelectCell(Sender: TObject; ACol,
+      ARow: Integer; var CanSelect: Boolean);
 
   private
     { Private declarations }
@@ -306,11 +316,32 @@ procedure TFEditBiodataPasien.btnSimpanClick(Sender: TObject);
 var
   tglLahir :String;
 begin
-if (edtNoRekamedis.Text='') or (edtTahun.Text='') or (edtTempatLahir.Text='') or (cbbJenisKelamin.Text='') or
-    (cbbPendidikan.EditValue= '') or (cbbPekerjaan.EditValue='') or (mmoAlamat.Text='') or (edtProvinsi.Text='') or
-    (edtKabKota.Text='') or (edtKecamatan.Text='') or (edtKeluarahan.Text='')  or
-    (cbbAgama.EditValue='') then
-      MessageDlg('Data Di Isi Lengkap...!!!',mtWarning,[mbok],0)
+if      (edtNoRekamedis.Text='') then
+        MessageDlg('No Rekamedis Wajib Di Isi...!',mtWarning,[mbOK],0)
+else if (edtTahun.Text='') then
+        MessageDlg('Tahun Wajib Di Isi...!',mtWarning,[mbOK],0)
+else if (edtTempatLahir.Text='') then
+        MessageDlg('Tempat Lahir Wajib Di Isi...!',mtWarning,[mbOK],0)
+else if (cbbJenisKelamin.Text='') then
+        MessageDlg('Jenis Kelamin Wajib Di Isi...!',mtWarning,[mbOK],0)
+else if (cbbPendidikan.EditValue= '') then
+        MessageDlg('Pendidikan Wajib Di Isi...!',mtWarning,[mbOK],0)
+else if (cbbPekerjaan.EditValue='') then
+        MessageDlg('Pekerjaan Wajib Di Isi...!',mtWarning,[mbOK],0)
+else if(mmoAlamat.Text='') then
+        MessageDlg('Alamat Wajib Di Isi...!',mtWarning,[mbOK],0)
+else if (edtProvinsi.Text='') then
+        MessageDlg('Provinsi Wajib Di Isi...!',mtWarning,[mbOK],0)
+else if (edtKabKota.Text='') then
+        MessageDlg('Kab/kota Wajib Di Isi...!',mtWarning,[mbOK],0)
+else if (edtKecamatan.Text='') then
+        MessageDlg('Kecamatan Wajib Di Isi...!',mtWarning,[mbOK],0)
+else if (edtKeluarahan.Text='') then
+        MessageDlg('Keluarahan Wajib Di Isi...!',mtWarning,[mbOK],0)
+else if (cbbAgama.EditValue='') then
+      MessageDlg('Agama Wajib Di Isi...!!!',mtWarning,[mbok],0)
+else if (cbbMaritalStatus.Text='') then
+      MessageDlg('Marital Status Wajib Di Isi...!!!',mtWarning,[mbok],0)
     else
     begin
       tglLahir := FormatDateTime('yyyy-MM-dd',dtpTglLahir.Date);
@@ -325,7 +356,7 @@ if (edtNoRekamedis.Text='') or (edtTahun.Text='') or (edtTempatLahir.Text='') or
                       'agama="'+cbbAgama.Text+'",alamat="'+mmoAlamat.Text+'",pendidikan="'+cbbPendidikan.Text+'",'+
                       'pekerjaan="'+cbbPekerjaan.Text+'",kelurahan="'+edtKeluarahan.Text+'",kecamatan="'+edtKecamatan.Text+'",'+
                       'kabupaten="'+edtKabKota.Text+'",provinsi="'+edtProvinsi.Text+'",kdPos="'+edtKodePos.Text+'",bahasa="'+cbbBahasa.Text+'",'+
-                      'noKtp="'+edtNoIdentitas.Text+'",noTelepone="'+edtNoTelepone.Text+'",noIdentitasKtp="'+edtNoIdentitas.Text+'" where noRekamedis="'+edtNoRekamedis.Text+'"';
+                      'noKtp="'+edtNoIdentitas.Text+'",noTelepone="'+edtNoTelepone.Text+'",noIdentitasKtp="'+edtNoIdentitas.Text+'",maritalStatus="'+cbbMaritalStatus.Text+'" where noRekamedis="'+edtNoRekamedis.Text+'"';
            ExecSQL;
            //SQL.Text := 'select noRekamedis,nmPasien,tempatLahir,tglLahir,'+
                        //'jenisKelamin,agama,alamat,pekerjaan,provinsi,kdPos,noIdentitasKtp  from t_pasien';
@@ -410,8 +441,8 @@ procedure TFEditBiodataPasien.strngrdDesaDblClick(Sender: TObject);
 begin
   with strngrdDesa do
     begin
-      edtKeluarahan.Text := strngrdDesa.Cells[1,strngrdDesa.selection.top];
-      edtKeluarahan.SetFocus;
+      //edtKeluarahan.Text := strngrdDesa.Cells[1,strngrdDesa.selection.top];
+      edtKecamatan.SetFocus;
       Visible := False;
     end;
 end;
@@ -452,7 +483,7 @@ procedure TFEditBiodataPasien.strngrdKecamatanDblClick(Sender: TObject);
 begin
   with strngrdKecamatan do
     begin
-      edtKecamatan.Text := strngrdKecamatan.Cells[1,strngrdKecamatan.selection.top];
+      //edtKecamatan.Text := strngrdKecamatan.Cells[1,strngrdKecamatan.selection.top];
       edtKabKota.SetFocus;
       Visible := False;
     end;
@@ -462,8 +493,8 @@ procedure TFEditBiodataPasien.strngrdKabKotaDblClick(Sender: TObject);
 begin
    with strngrdKabKota do
     begin
-      edtKabKota.Text := strngrdKabKota.Cells[1,strngrdKabKota.selection.top];
-      edtKabKota.SetFocus;
+      //edtKabKota.Text := strngrdKabKota.Cells[1,strngrdKabKota.selection.top];
+      edtProvinsi.SetFocus;
       Visible := False;
     end;
 end;
@@ -495,8 +526,8 @@ if Key=#13 then
     Key:=#0;
     with strngrdDesa do
     begin
-      edtKeluarahan.Text := strngrdDesa.Cells[1,strngrdDesa.selection.top];
-      edtKeluarahan.SetFocus;
+      //edtKeluarahan.Text := strngrdDesa.Cells[1,strngrdDesa.selection.top];
+      edtKecamatan.SetFocus;
       Visible := False;
     end;
   end;
@@ -511,8 +542,8 @@ if Key=#13 then
     Key:=#0;
      with strngrdKabKota do
       begin
-        edtKabKota.Text := strngrdKabKota.Cells[1,strngrdKabKota.selection.top];
-        edtKabKota.SetFocus;
+        //edtKabKota.Text := strngrdKabKota.Cells[1,strngrdKabKota.selection.top];
+        edtProvinsi.SetFocus;
         Visible := False;
       end;
 end;
@@ -539,9 +570,9 @@ procedure TFEditBiodataPasien.strngrdProvinsiDblClick(Sender: TObject);
 begin
    with strngrdProvinsi do
    begin
-        edtProvinsi.Text := strngrdProvinsi.Cells[1,strngrdProvinsi.selection.top];
-        edtProvinsi.SetFocus;
-        Visible := False;
+    //edtProvinsi.Text := strngrdProvinsi.Cells[1,strngrdProvinsi.selection.top];
+    edtKodePos.SetFocus;
+    Visible := False;
    end;
 end;
 
@@ -553,12 +584,36 @@ if Key=#13 then
     Key:=#0;
      with strngrdProvinsi do
      begin
-          edtProvinsi.Text := strngrdProvinsi.Cells[1,strngrdProvinsi.selection.top];
-          edtProvinsi.SetFocus;
+          //edtProvinsi.Text := strngrdProvinsi.Cells[1,strngrdProvinsi.selection.top];
+          edtKodePos.SetFocus;
           Visible := False;
      end;
   end;
 if Key =#27 then strngrdProvinsi.Visible := False;
+end;
+
+procedure TFEditBiodataPasien.strngrdDesaSelectCell(Sender: TObject; ACol,
+  ARow: Integer; var CanSelect: Boolean);
+begin
+  edtKeluarahan.Text := strngrdDesa.Cells[1,arow];
+end;
+
+procedure TFEditBiodataPasien.strngrdKecamatanSelectCell(Sender: TObject;
+  ACol, ARow: Integer; var CanSelect: Boolean);
+begin
+  edtKecamatan.Text := strngrdKecamatan.Cells[1,arow];
+end;
+
+procedure TFEditBiodataPasien.strngrdKabKotaSelectCell(Sender: TObject;
+  ACol, ARow: Integer; var CanSelect: Boolean);
+begin
+  edtKabKota.Text := strngrdKabKota.Cells[1,arow];
+end;
+
+procedure TFEditBiodataPasien.strngrdProvinsiSelectCell(Sender: TObject;
+  ACol, ARow: Integer; var CanSelect: Boolean);
+begin
+  edtProvinsi.Text := strngrdProvinsi.Cells[1,arow];
 end;
 
 end.

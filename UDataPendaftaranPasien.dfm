@@ -35,33 +35,23 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
       Width = 1287
       Height = 445
       Align = alClient
-      DataGrouping.GroupLevels = <>
       DataSource = DataSimrs.dsVwPasien
       DrawMemoText = True
-      Flat = False
+      DynProps = <>
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
       Font.Name = 'Tahoma'
       Font.Style = []
-      FooterColor = clWindow
-      FooterFont.Charset = DEFAULT_CHARSET
-      FooterFont.Color = clWindowText
-      FooterFont.Height = -20
-      FooterFont.Name = 'MS Sans Serif'
-      FooterFont.Style = []
-      IndicatorOptions = [gioShowRowIndicatorEh]
+      FooterParams.Color = clWindow
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
       ParentFont = False
       TabOrder = 0
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -20
-      TitleFont.Name = 'MS Sans Serif'
-      TitleFont.Style = []
       OnDblClick = dbgrdhDaftarDataPasienDblClick
       Columns = <
         item
+          CellButtons = <>
+          DynProps = <>
           EditButtons = <>
           FieldName = 'norekamedis'
           Footers = <>
@@ -70,6 +60,8 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
           Width = 120
         end
         item
+          CellButtons = <>
+          DynProps = <>
           EditButtons = <>
           FieldName = 'nmPasien'
           Footers = <>
@@ -78,6 +70,8 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
           Width = 175
         end
         item
+          CellButtons = <>
+          DynProps = <>
           EditButtons = <>
           FieldName = 'tempatLahir'
           Footers = <>
@@ -86,6 +80,8 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
           Width = 152
         end
         item
+          CellButtons = <>
+          DynProps = <>
           EditButtons = <>
           FieldName = 'tglLahir'
           Footers = <>
@@ -95,6 +91,8 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
         end
         item
           Alignment = taCenter
+          CellButtons = <>
+          DynProps = <>
           EditButtons = <>
           FieldName = 'jenisKelamin'
           Footers = <>
@@ -103,6 +101,8 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
           Width = 42
         end
         item
+          CellButtons = <>
+          DynProps = <>
           EditButtons = <>
           FieldName = 'agama'
           Footers = <>
@@ -111,6 +111,8 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
           Width = 87
         end
         item
+          CellButtons = <>
+          DynProps = <>
           EditButtons = <>
           FieldName = 'alamat'
           Footers = <>
@@ -119,6 +121,8 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
           Width = 446
         end
         item
+          CellButtons = <>
+          DynProps = <>
           EditButtons = <>
           FieldName = 'kelurahan'
           Footers = <>
@@ -127,6 +131,8 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
           Width = 193
         end
         item
+          CellButtons = <>
+          DynProps = <>
           EditButtons = <>
           FieldName = 'kecamatan'
           Footers = <>
@@ -135,6 +141,8 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
           Width = 138
         end
         item
+          CellButtons = <>
+          DynProps = <>
           EditButtons = <>
           FieldName = 'kabupaten'
           Footers = <>
@@ -143,6 +151,8 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
           Width = 206
         end
         item
+          CellButtons = <>
+          DynProps = <>
           EditButtons = <>
           FieldName = 'provinsi'
           Footers = <>
@@ -151,6 +161,8 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
           Width = 122
         end
         item
+          CellButtons = <>
+          DynProps = <>
           EditButtons = <>
           FieldName = 'pekerjaan'
           Footers = <>
@@ -176,7 +188,7 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
       ParentFont = False
       TabOrder = 1
       object lblNama: TLabel
-        Left = 8
+        Left = 288
         Top = 24
         Width = 45
         Height = 19
@@ -189,7 +201,7 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
         ParentFont = False
       end
       object lblAlamat: TLabel
-        Left = 216
+        Left = 488
         Top = 24
         Width = 63
         Height = 19
@@ -202,8 +214,8 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
         ParentFont = False
       end
       object edtNoRmNama: TEdit
-        Left = 8
-        Top = 56
+        Left = 288
+        Top = 48
         Width = 193
         Height = 32
         Font.Charset = DEFAULT_CHARSET
@@ -217,7 +229,7 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
         OnKeyPress = edtNoRmNamaKeyPress
       end
       object edtAlamat: TEdit
-        Left = 216
+        Left = 488
         Top = 48
         Width = 449
         Height = 32
@@ -231,6 +243,32 @@ object FDataPendaftaranPasien: TFDataPendaftaranPasien
         TabOrder = 1
         OnChange = edtAlamatChange
         OnKeyPress = edtAlamatKeyPress
+      end
+      object grpKategori: TGroupBox
+        Left = 8
+        Top = 24
+        Width = 257
+        Height = 57
+        Caption = 'KATEGORI'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 2
+        object cbbKategori: TComboBox
+          Left = 8
+          Top = 24
+          Width = 241
+          Height = 26
+          ItemHeight = 18
+          TabOrder = 0
+          Text = 'cbbKategori'
+          Items.Strings = (
+            'NAMA AWAL'
+            'TIDAK HANYA DARI AWAL')
+        end
       end
     end
   end

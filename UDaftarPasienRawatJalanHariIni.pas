@@ -45,6 +45,7 @@ type
     lblTanggal: TLabel;
     pnlKeluar: TPanel;
     dtpTglHariIni: TDateTimePicker;
+    btnPrintSep: TcxButton;
     procedure btnBatalPasienClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure edtNoRmNamaChange(Sender: TObject);
@@ -60,6 +61,7 @@ type
   public
     { Public declarations }
    procedure tampilpasienhariini;
+   procedure TampilsettingLink;
   end;
 
 var
@@ -94,6 +96,17 @@ begin
   Result := StringOfChar(#0, iLen);
   GetComputerName(PChar(Result), iLen);
   SetLength(Result, iLen);
+end;
+
+procedure TFDaftarPasienHariIniRajal.TampilsettingLink;
+begin
+  with DataSimrs.qryt_settinglinkapplainpendaftaran do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'select * from t_settinglinkapplainpendaftaran where idsettinglinkapplainpendaftaran=1';
+    Open;
+  end;
 end;
 
 
@@ -240,8 +253,11 @@ if DataSimrs.qryvw_pasienrawatjalan.RecordCount >= 1 then
         SQL.Text := 'select * from t_komputer where namaKomputer="'+GetComputerNameFromWindows+'"';
         Open;
       end;
-      
-      FPendaftaran.frxrprtKartuBerobat.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\kartuberobat.fr3');
+
+      TampilsettingLink;
+
+      ///FPendaftaran.frxrprtKartuBerobat.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\kartuberobat.fr3');
+      FPendaftaran.frxrprtKartuBerobat.LoadFromFile(Trim(DataSimrs.qryt_settinglinkapplainpendaftaran.Fieldbyname('kartu').AsString)+'\kartuberobat.fr3');
       FPendaftaran.frxrprtKartuBerobat.PrintOptions.Printer:= DataSimrs.qryt_komputer.FieldByname('printerKartu').AsString;
       //frxrprtKartuBerobat.PrintOptions.ShowDialog:=True;
       FPendaftaran.frxrprtKartuBerobat.PrepareReport;
@@ -295,7 +311,10 @@ if DataSimrs.qryvw_pasienrawatjalan.RecordCount >= 1 then
         Open;
       end;
 
-      FPendaftaran.frxrprtLabel.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\label2x1.fr3');
+      TampilsettingLink;
+
+      ///FPendaftaran.frxrprtLabel.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\label2x1.fr3');
+      FPendaftaran.frxrprtLabel.LoadFromFile(Trim(DataSimrs.qryt_settinglinkapplainpendaftaran.Fieldbyname('label2x1').AsString)+'\label2x1.fr3');
       FPendaftaran.frxrprtLabel.ShowReport();
    end;
   end
@@ -351,7 +370,10 @@ if DataSimrs.qryvw_pasienrawatjalan.RecordCount >= 1 then
           Open;
         end;
 
-        FPendaftaran.frxrprtKarcis.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\karcisrajal.fr3');
+        TampilsettingLink;
+
+        ///FPendaftaran.frxrprtKarcis.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\karcisrajal.fr3');
+        FPendaftaran.frxrprtKarcis.LoadFromFile(Trim(DataSimrs.qryt_settinglinkapplainpendaftaran.fieldByname('karcis').AsString)+'\karcisrajal.fr3');
         FPendaftaran.frxrprtKarcis.PrintOptions.Printer:= DataSimrs.qryt_komputer['printerKarcis'];
         //FPendaftaranRawatJalan.frxrprtKarcis.PrintOptions.ShowDialog:=True;
         FPendaftaran.frxrprtKarcis.PrepareReport;

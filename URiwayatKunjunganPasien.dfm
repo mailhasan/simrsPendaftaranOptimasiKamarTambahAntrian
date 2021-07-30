@@ -305,10 +305,6 @@ object FRiwayatKunjunganPasien: TFRiwayatKunjunganPasien
         Caption = 'RADIOLOGI'
         ImageIndex = 3
       end
-      object tsRawatJalanLama: TTabSheet
-        Caption = 'RAWAT JALAN LAMA'
-        ImageIndex = 4
-      end
     end
   end
   object pnlBawah: TPanel

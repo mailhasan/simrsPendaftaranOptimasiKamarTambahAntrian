@@ -1,9 +1,9 @@
 object FPendaftaran: TFPendaftaran
-  Left = 191
-  Top = 125
-  Width = 1472
-  Height = 842
-  Caption = 'PENDAFTARAN RAWAT JALAN'
+  Left = 37
+  Top = 7
+  Width = 1936
+  Height = 1051
+  Caption = 'PENDAFTARAN'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,7 +19,7 @@ object FPendaftaran: TFPendaftaran
   object pnlAtas: TPanel
     Left = 0
     Top = 0
-    Width = 1456
+    Width = 1920
     Height = 49
     Align = alTop
     Caption = 'PENDAFTARAN RAWAT JALAN'
@@ -32,7 +32,7 @@ object FPendaftaran: TFPendaftaran
     ParentFont = False
     TabOrder = 0
     object pnlKeluar: TPanel
-      Left = 1318
+      Left = 1782
       Top = 1
       Width = 137
       Height = 47
@@ -52,8 +52,8 @@ object FPendaftaran: TFPendaftaran
   end
   object pnlBawah: TPanel
     Left = 0
-    Top = 723
-    Width = 1456
+    Top = 932
+    Width = 1920
     Height = 41
     Align = alBottom
     Color = clMenuHighlight
@@ -108,7 +108,7 @@ object FPendaftaran: TFPendaftaran
       Top = 7
       Width = 97
       Height = 29
-      Caption = 'GELANG'
+      Caption = 'GELANG (L)'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -15
@@ -119,7 +119,7 @@ object FPendaftaran: TFPendaftaran
       OnClick = btnLabelClick
     end
     object btnLabel2x1: TButton
-      Left = 1079
+      Left = 1175
       Top = 7
       Width = 106
       Height = 29
@@ -134,7 +134,7 @@ object FPendaftaran: TFPendaftaran
       OnClick = btnLabel2x1Click
     end
     object btnKarcis: TButton
-      Left = 1288
+      Left = 1384
       Top = 7
       Width = 97
       Height = 28
@@ -149,7 +149,7 @@ object FPendaftaran: TFPendaftaran
       OnClick = btnKarcisClick
     end
     object btnLabelPdc: TButton
-      Left = 1192
+      Left = 1288
       Top = 8
       Width = 89
       Height = 29
@@ -163,12 +163,27 @@ object FPendaftaran: TFPendaftaran
       TabOrder = 6
       OnClick = btnLabelPdcClick
     end
+    object btnGelangPerempuan: TButton
+      Left = 1080
+      Top = 8
+      Width = 89
+      Height = 29
+      Caption = 'GELANG (P)'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 7
+      OnClick = btnGelangPerempuanClick
+    end
   end
   object pnlKanan: TPanel
-    Left = 1246
+    Left = 1710
     Top = 49
     Width = 210
-    Height = 674
+    Height = 883
     Align = alRight
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -181,7 +196,7 @@ object FPendaftaran: TFPendaftaran
       Left = 1
       Top = 1
       Width = 208
-      Height = 672
+      Height = 881
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -265,7 +280,7 @@ object FPendaftaran: TFPendaftaran
             Item = dxnvbrtmMenuItemJadwalKontrol
           end
           item
-            Item = dxnvbrtmBpjs
+            Item = dxnvbrtmSIPP
           end>
       end
       object dxnvbrgrpMenuGroupLaporan: TdxNavBarGroup
@@ -275,6 +290,24 @@ object FPendaftaran: TFPendaftaran
         Links = <
           item
             Item = dxnvbrtmMenuItemLaporan
+          end>
+      end
+      object dxnvbrgrpMenuGroupVklaim: TdxNavBarGroup
+        Caption = 'VKLAIM'
+        SelectedLinkIndex = -1
+        TopVisibleLinkIndex = 0
+        Links = <
+          item
+            Item = dxnvbrtmRUJUKANMANUAL
+          end
+          item
+            Item = dxnvbrtmRUJUKANONLINE
+          end
+          item
+            Item = dxnvbrtmMenuItemRUJUKAN
+          end
+          item
+            Item = dxnvbrtmUpdatePulangSep
           end>
       end
       object dxnvbrgrpMenuGroupKeluar: TdxNavBarGroup
@@ -333,13 +366,32 @@ object FPendaftaran: TFPendaftaran
         Caption = 'BPJS'
         OnClick = dxnvbrtmBpjsClick
       end
+      object dxnvbrtmUpdatePulangSep: TdxNavBarItem
+        Caption = 'UPDATE PULANG SEP'
+        OnClick = dxnvbrtmUpdatePulangSepClick
+      end
+      object dxnvbrtmSIPP: TdxNavBarItem
+        Caption = 'SIPP'
+      end
+      object dxnvbrtmMenuItemRUJUKAN: TdxNavBarItem
+        Caption = 'RUJUKAN'
+        OnClick = dxnvbrtmMenuItemRUJUKANClick
+      end
+      object dxnvbrtmRUJUKANMANUAL: TdxNavBarItem
+        Caption = 'RUJUKAN MANUAL'
+        OnClick = dxnvbrtmRUJUKANMANUALClick
+      end
+      object dxnvbrtmRUJUKANONLINE: TdxNavBarItem
+        Caption = 'RUJUKAN ONLINE'
+        OnClick = dxnvbrtmRUJUKANONLINEClick
+      end
     end
   end
   object pnlTegah: TPanel
     Left = 0
     Top = 49
-    Width = 1246
-    Height = 674
+    Width = 1710
+    Height = 883
     Align = alClient
     Color = clSkyBlue
     Font.Charset = DEFAULT_CHARSET
@@ -349,29 +401,425 @@ object FPendaftaran: TFPendaftaran
     Font.Style = []
     ParentFont = False
     TabOrder = 3
-    object pnlAtas1: TPanel
+    object grpDataPasien: TGroupBox
       Left = 1
       Top = 1
-      Width = 1244
-      Height = 88
-      Align = alTop
+      Width = 648
+      Height = 881
+      Align = alLeft
+      Caption = 'DATA DAFTAR PASIEN'
       Color = clSkyBlue
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
       TabOrder = 0
-      object grpNoRm: TGroupBox
-        Left = 1
-        Top = 1
-        Width = 656
-        Height = 86
-        Align = alLeft
-        Color = clSkyBlue
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'Times New Roman'
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
+      object lblKabupaten: TLabel
+        Left = 16
+        Top = 384
+        Width = 5
+        Height = 19
+      end
+      object cxgrpbxDataPasien: TcxGroupBox
+        Left = 2
+        Top = 105
+        Align = alClient
+        Caption = 'DATA PASIEN'
         TabOrder = 0
+        Height = 774
+        Width = 644
+        object lblNoIdentitas: TLabel
+          Left = 8
+          Top = 24
+          Width = 139
+          Height = 18
+          Caption = 'No Identitas / KTP'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblNama: TLabel
+          Left = 8
+          Top = 52
+          Width = 110
+          Height = 18
+          Caption = 'Nama Lengkap'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblTempatTglLahir: TLabel
+          Left = 7
+          Top = 83
+          Width = 138
+          Height = 18
+          Caption = 'Tempat / Tgl Lahir'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblUmur: TLabel
+          Left = 8
+          Top = 113
+          Width = 40
+          Height = 18
+          Caption = 'Umur'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblJenisKelamin: TLabel
+          Left = 8
+          Top = 146
+          Width = 103
+          Height = 18
+          Caption = 'Jenis Kelamin'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblPendidikan: TLabel
+          Left = 8
+          Top = 180
+          Width = 83
+          Height = 18
+          Caption = 'Pendidikan'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblPekerjaan: TLabel
+          Left = 8
+          Top = 209
+          Width = 76
+          Height = 18
+          Caption = 'Pekerjaan'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblAlamat: TLabel
+          Left = 9
+          Top = 281
+          Width = 52
+          Height = 18
+          Caption = 'Alamat'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lbl3: TLabel
+          Left = 352
+          Top = 211
+          Width = 89
+          Height = 18
+          Caption = 'No. Telepon'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblBahasa: TLabel
+          Left = 352
+          Top = 179
+          Width = 54
+          Height = 18
+          Caption = 'Bahasa'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblAgama: TLabel
+          Left = 352
+          Top = 148
+          Width = 50
+          Height = 18
+          Caption = 'Agama'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblKelurahanDesa: TLabel
+          Left = 8
+          Top = 341
+          Width = 130
+          Height = 18
+          Caption = 'Kelurahan / Desa'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblKecamatan: TLabel
+          Left = 8
+          Top = 374
+          Width = 82
+          Height = 18
+          Caption = 'Kecamatan'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lbl1: TLabel
+          Left = 8
+          Top = 403
+          Width = 130
+          Height = 18
+          Caption = 'Kabupaten / Kota'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblProvinsi: TLabel
+          Left = 8
+          Top = 435
+          Width = 62
+          Height = 18
+          Caption = 'Provinsi'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblKodePos: TLabel
+          Left = 8
+          Top = 471
+          Width = 68
+          Height = 18
+          Caption = 'Kode Pos'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblKodeJadwalPasien: TLabel
+          Left = 344
+          Top = 478
+          Width = 172
+          Height = 19
+          Caption = 'lblKodeJadwalPasien'
+          Visible = False
+        end
+        object lblMaritalStatus: TLabel
+          Left = 8
+          Top = 248
+          Width = 115
+          Height = 19
+          Caption = 'Marital Status'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object edtNoIdentitas: TEdit
+          Left = 152
+          Top = 16
+          Width = 457
+          Height = 27
+          Enabled = False
+          TabOrder = 0
+        end
+        object edtLamaBaru: TEdit
+          Left = 464
+          Top = 16
+          Width = 145
+          Height = 27
+          TabOrder = 1
+          Visible = False
+        end
+        object edtNmLengkap: TEdit
+          Left = 152
+          Top = 48
+          Width = 457
+          Height = 27
+          Enabled = False
+          TabOrder = 2
+        end
+        object edtTempatLahir: TEdit
+          Left = 152
+          Top = 80
+          Width = 177
+          Height = 27
+          Enabled = False
+          TabOrder = 3
+        end
+        object edtTglLahir: TEdit
+          Left = 344
+          Top = 80
+          Width = 265
+          Height = 27
+          Enabled = False
+          TabOrder = 4
+        end
+        object edtTahun: TEdit
+          Left = 152
+          Top = 112
+          Width = 457
+          Height = 27
+          Enabled = False
+          TabOrder = 5
+        end
+        object edtJenisKelamin: TEdit
+          Left = 152
+          Top = 144
+          Width = 185
+          Height = 27
+          Enabled = False
+          TabOrder = 6
+        end
+        object edtPendidikan: TEdit
+          Left = 152
+          Top = 176
+          Width = 185
+          Height = 27
+          Enabled = False
+          TabOrder = 7
+        end
+        object edtPekerjaan: TEdit
+          Left = 152
+          Top = 208
+          Width = 185
+          Height = 27
+          Enabled = False
+          TabOrder = 8
+        end
+        object mmoAlamat: TMemo
+          Left = 152
+          Top = 280
+          Width = 457
+          Height = 49
+          Enabled = False
+          TabOrder = 9
+        end
+        object edtAgama: TEdit
+          Left = 464
+          Top = 144
+          Width = 145
+          Height = 27
+          Enabled = False
+          TabOrder = 10
+        end
+        object edtBahasa: TEdit
+          Left = 464
+          Top = 176
+          Width = 145
+          Height = 27
+          Enabled = False
+          TabOrder = 11
+        end
+        object edtNoTelepone: TEdit
+          Left = 464
+          Top = 208
+          Width = 145
+          Height = 27
+          Enabled = False
+          TabOrder = 12
+        end
+        object edtKelurahanDesa: TEdit
+          Left = 152
+          Top = 336
+          Width = 457
+          Height = 27
+          Enabled = False
+          TabOrder = 13
+        end
+        object edtKecamatan: TEdit
+          Left = 152
+          Top = 368
+          Width = 457
+          Height = 27
+          Enabled = False
+          TabOrder = 14
+        end
+        object edtKabupaten: TEdit
+          Left = 152
+          Top = 400
+          Width = 457
+          Height = 27
+          Enabled = False
+          TabOrder = 15
+        end
+        object edtProvinsi: TEdit
+          Left = 152
+          Top = 432
+          Width = 457
+          Height = 27
+          Enabled = False
+          TabOrder = 16
+        end
+        object edtKodePos: TEdit
+          Left = 152
+          Top = 470
+          Width = 177
+          Height = 27
+          Enabled = False
+          TabOrder = 17
+        end
+        object edtMaritalStatus: TEdit
+          Left = 152
+          Top = 240
+          Width = 457
+          Height = 27
+          TabOrder = 18
+          Text = 'edtMaritalStatus'
+        end
+      end
+      object cxgrpbxAtasDataDftrPasien: TcxGroupBox
+        Left = 2
+        Top = 21
+        Align = alTop
+        TabOrder = 1
+        Height = 84
+        Width = 644
         object lblTanggal: TLabel
           Left = 8
           Top = 16
@@ -385,104 +833,8 @@ object FPendaftaran: TFPendaftaran
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object lblNoRekamedis: TLabel
-          Left = 8
-          Top = 48
-          Width = 54
-          Height = 18
-          Caption = 'No. RM'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -15
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object dtpTanggal: TDateTimePicker
-          Left = 104
-          Top = 16
-          Width = 186
-          Height = 27
-          Date = 43509.432595706020000000
-          Time = 43509.432595706020000000
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 0
-        end
-        object edtNoRekamedis: TEdit
-          Left = 104
-          Top = 48
-          Width = 185
-          Height = 27
-          TabOrder = 1
-          OnClick = edtNoRekamedisClick
-          OnKeyPress = edtNoRekamedisKeyPress
-        end
-        object btnPasienLama: TButton
-          Left = 304
-          Top = 16
-          Width = 137
-          Height = 25
-          Caption = 'Pasien Lama'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -15
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          TabOrder = 2
-          OnClick = btnPasienLamaClick
-        end
-        object btnPasienBaru: TButton
-          Left = 304
-          Top = 48
-          Width = 137
-          Height = 25
-          Caption = 'Pasien Baru'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -15
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          TabOrder = 3
-          OnClick = btnPasienBaruClick
-        end
-      end
-      object grpNoRegistrasi: TGroupBox
-        Left = 657
-        Top = 1
-        Width = 586
-        Height = 86
-        Align = alClient
-        Color = clSkyBlue
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'Times New Roman'
-        Font.Style = [fsBold]
-        ParentColor = False
-        ParentFont = False
-        TabOrder = 1
-        object lblNoRegistrasi: TLabel
-          Left = 16
-          Top = 50
-          Width = 107
-          Height = 18
-          Caption = 'No. Registrasi'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -15
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
         object lblKunjungan: TLabel
-          Left = 16
+          Left = 352
           Top = 24
           Width = 101
           Height = 18
@@ -494,644 +846,123 @@ object FPendaftaran: TFPendaftaran
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object edtNoRegistrasi: TEdit
-          Left = 168
-          Top = 48
-          Width = 185
-          Height = 27
-          Enabled = False
-          TabOrder = 0
-        end
-        object edtKunjungan: TEdit
-          Left = 168
-          Top = 16
-          Width = 185
-          Height = 27
-          Enabled = False
-          TabOrder = 1
-        end
-      end
-    end
-    object grpDataPasien: TGroupBox
-      Left = 1
-      Top = 89
-      Width = 656
-      Height = 584
-      Align = alLeft
-      Caption = 'DATA IDENTITAS PASIEN'
-      Color = clSkyBlue
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clNavy
-      Font.Height = -16
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-      TabOrder = 1
-      object lblNoIdentitas: TLabel
-        Left = 16
-        Top = 32
-        Width = 139
-        Height = 18
-        Caption = 'No Identitas / KTP'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblNama: TLabel
-        Left = 16
-        Top = 60
-        Width = 110
-        Height = 18
-        Caption = 'Nama Lengkap'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblTempatTglLahir: TLabel
-        Left = 15
-        Top = 91
-        Width = 138
-        Height = 18
-        Caption = 'Tempat / Tgl Lahir'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblUmur: TLabel
-        Left = 16
-        Top = 121
-        Width = 40
-        Height = 18
-        Caption = 'Umur'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblJenisKelamin: TLabel
-        Left = 16
-        Top = 154
-        Width = 103
-        Height = 18
-        Caption = 'Jenis Kelamin'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblPendidikan: TLabel
-        Left = 16
-        Top = 188
-        Width = 83
-        Height = 18
-        Caption = 'Pendidikan'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblAlamat: TLabel
-        Left = 17
-        Top = 249
-        Width = 52
-        Height = 18
-        Caption = 'Alamat'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblPekerjaan: TLabel
-        Left = 16
-        Top = 217
-        Width = 76
-        Height = 18
-        Caption = 'Pekerjaan'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblKelurahanDesa: TLabel
-        Left = 16
-        Top = 325
-        Width = 130
-        Height = 18
-        Caption = 'Kelurahan / Desa'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblKecamatan: TLabel
-        Left = 16
-        Top = 358
-        Width = 82
-        Height = 18
-        Caption = 'Kecamatan'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblKabupaten: TLabel
-        Left = 16
-        Top = 384
-        Width = 5
-        Height = 19
-      end
-      object lbl1: TLabel
-        Left = 16
-        Top = 387
-        Width = 130
-        Height = 18
-        Caption = 'Kabupaten / Kota'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblProvinsi: TLabel
-        Left = 16
-        Top = 419
-        Width = 62
-        Height = 18
-        Caption = 'Provinsi'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblKodePos: TLabel
-        Left = 16
-        Top = 452
-        Width = 68
-        Height = 18
-        Caption = 'Kode Pos'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblBahasa: TLabel
-        Left = 384
-        Top = 187
-        Width = 54
-        Height = 18
-        Caption = 'Bahasa'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblAgama: TLabel
-        Left = 384
-        Top = 156
-        Width = 50
-        Height = 18
-        Caption = 'Agama'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lbl3: TLabel
-        Left = 384
-        Top = 219
-        Width = 89
-        Height = 18
-        Caption = 'No. Telepon'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblKodeJadwalPasien: TLabel
-        Left = 16
-        Top = 536
-        Width = 172
-        Height = 19
-        Caption = 'lblKodeJadwalPasien'
-        Visible = False
-      end
-      object edtNoIdentitas: TEdit
-        Left = 184
-        Top = 24
-        Width = 457
-        Height = 27
-        Enabled = False
-        TabOrder = 0
-      end
-      object edtNmLengkap: TEdit
-        Left = 184
-        Top = 56
-        Width = 457
-        Height = 27
-        Enabled = False
-        TabOrder = 1
-      end
-      object edtTempatLahir: TEdit
-        Left = 184
-        Top = 88
-        Width = 177
-        Height = 27
-        Enabled = False
-        TabOrder = 2
-      end
-      object edtTglLahir: TEdit
-        Left = 376
-        Top = 88
-        Width = 265
-        Height = 27
-        Enabled = False
-        TabOrder = 3
-      end
-      object edtTahun: TEdit
-        Left = 184
-        Top = 120
-        Width = 457
-        Height = 27
-        Enabled = False
-        TabOrder = 4
-      end
-      object edtJenisKelamin: TEdit
-        Left = 184
-        Top = 152
-        Width = 185
-        Height = 27
-        Enabled = False
-        TabOrder = 5
-      end
-      object edtPendidikan: TEdit
-        Left = 184
-        Top = 184
-        Width = 185
-        Height = 27
-        Enabled = False
-        TabOrder = 6
-      end
-      object edtPekerjaan: TEdit
-        Left = 184
-        Top = 216
-        Width = 185
-        Height = 27
-        Enabled = False
-        TabOrder = 7
-      end
-      object mmoAlamat: TMemo
-        Left = 184
-        Top = 248
-        Width = 457
-        Height = 65
-        Enabled = False
-        TabOrder = 8
-      end
-      object edtKelurahanDesa: TEdit
-        Left = 184
-        Top = 320
-        Width = 457
-        Height = 27
-        Enabled = False
-        TabOrder = 9
-      end
-      object edtKecamatan: TEdit
-        Left = 184
-        Top = 352
-        Width = 457
-        Height = 27
-        Enabled = False
-        TabOrder = 10
-      end
-      object edtKabupaten: TEdit
-        Left = 184
-        Top = 384
-        Width = 457
-        Height = 27
-        Enabled = False
-        TabOrder = 11
-      end
-      object edtProvinsi: TEdit
-        Left = 184
-        Top = 416
-        Width = 457
-        Height = 27
-        Enabled = False
-        TabOrder = 12
-      end
-      object edtKodePos: TEdit
-        Left = 184
-        Top = 448
-        Width = 177
-        Height = 27
-        Enabled = False
-        TabOrder = 13
-      end
-      object edtBahasa: TEdit
-        Left = 496
-        Top = 184
-        Width = 145
-        Height = 27
-        Enabled = False
-        TabOrder = 14
-      end
-      object edtAgama: TEdit
-        Left = 496
-        Top = 152
-        Width = 145
-        Height = 27
-        Enabled = False
-        TabOrder = 15
-      end
-      object edtLamaBaru: TEdit
-        Left = 496
-        Top = 24
-        Width = 145
-        Height = 27
-        TabOrder = 16
-        Visible = False
-      end
-      object edtNoTelepone: TEdit
-        Left = 496
-        Top = 216
-        Width = 145
-        Height = 27
-        Enabled = False
-        TabOrder = 17
-      end
-    end
-    object grpDataPendaftaran: TGroupBox
-      Left = 657
-      Top = 89
-      Width = 588
-      Height = 584
-      Align = alClient
-      Caption = 'DATA DAFTAR'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clNavy
-      Font.Height = -16
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-      TabOrder = 2
-      object lblAsalPasien: TLabel
-        Left = 16
-        Top = 32
-        Width = 86
-        Height = 18
-        Caption = 'Asal Pasien'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblCaraBayar: TLabel
-        Left = 17
-        Top = 90
-        Width = 83
-        Height = 18
-        Caption = 'Cara Bayar'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblUnitPelayanan: TLabel
-        Left = 16
-        Top = 272
-        Width = 113
-        Height = 18
-        Caption = 'Unit Pelayanan'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblDokter: TLabel
-        Left = 16
-        Top = 304
-        Width = 51
-        Height = 18
-        Caption = 'Dokter'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblPenjamin: TLabel
-        Left = 16
-        Top = 117
-        Width = 69
-        Height = 18
-        Caption = 'Penjamin'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lbl2: TLabel
-        Left = 16
-        Top = 60
-        Width = 97
-        Height = 18
-        Caption = 'Asal Rujukan'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object grpKarci: TGroupBox
-        Left = 8
-        Top = 336
-        Width = 681
-        Height = 105
-        Caption = 'DATA TAMPIL SETELAH PILIH UNIT PELAYANAN'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clNavy
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-        TabOrder = 0
-        object lblKarciPendaftaran: TLabel
+        object lblNoRekamedis: TLabel
           Left = 8
-          Top = 32
-          Width = 143
+          Top = 56
+          Width = 54
           Height = 18
-          Caption = 'Karcis Pendaftaran'
+          Caption = 'No. RM'
           Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
+          Font.Color = clWindowText
           Font.Height = -15
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object lblKonsulTasiDokter: TLabel
-          Left = 8
-          Top = 64
-          Width = 145
-          Height = 19
-          Caption = 'Konsultasi Dokter'
+        object lblNoRegistrasi: TLabel
+          Left = 352
+          Top = 50
+          Width = 107
+          Height = 18
+          Caption = 'No. Registrasi'
           Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
+          Font.Color = clWindowText
+          Font.Height = -15
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object edtKarcisPendaftaran: TEdit
-          Left = 168
-          Top = 24
-          Width = 385
-          Height = 26
-          CharCase = ecUpperCase
+        object dtpTanggal: TDateTimePicker
+          Left = 72
+          Top = 16
+          Width = 145
+          Height = 27
+          Date = 43509.432595706020000000
+          Time = 43509.432595706020000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 0
-          OnKeyPress = edtKarcisPendaftaranKeyPress
         end
-        object edtKonsulDokter: TEdit
-          Left = 168
-          Top = 56
-          Width = 385
-          Height = 26
-          CharCase = ecUpperCase
+        object btnPasienLama: TButton
+          Left = 224
+          Top = 16
+          Width = 121
+          Height = 25
+          Caption = 'Pasien Lama'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
           TabOrder = 1
-          OnKeyPress = edtKonsulDokterKeyPress
+          OnClick = btnPasienLamaClick
+        end
+        object edtKunjungan: TEdit
+          Left = 464
+          Top = 16
+          Width = 65
+          Height = 27
+          Enabled = False
+          TabOrder = 2
+        end
+        object edtNoRekamedis: TEdit
+          Left = 72
+          Top = 48
+          Width = 145
+          Height = 27
+          TabOrder = 3
+          OnClick = edtNoRekamedisClick
+          OnKeyPress = edtNoRekamedisKeyPress
+        end
+        object btnPasienBaru: TButton
+          Left = 224
+          Top = 48
+          Width = 121
+          Height = 25
+          Caption = 'Pasien Baru'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 4
+          OnClick = btnPasienBaruClick
+        end
+        object edtNoRegistrasi: TEdit
+          Left = 464
+          Top = 48
+          Width = 177
+          Height = 27
+          TabOrder = 5
         end
       end
-      object cbbAsalPasien: TcxLookupComboBox
-        Left = 168
-        Top = 24
-        Properties.CharCase = ecUpperCase
-        Properties.KeyFieldNames = 'kdAsalPasien'
-        Properties.ListColumns = <
-          item
-            Caption = 'ASAL PASIEN'
-            FieldName = 'asalPasien'
-          end>
-        Properties.ListSource = DataSimrs.dsVw_dsAsalPasien
-        TabOrder = 1
-        OnKeyPress = cbbAsalPasienKeyPress
-        Width = 393
-      end
-      object cbbCaraBayar: TcxLookupComboBox
-        Left = 168
-        Top = 88
-        Properties.CharCase = ecUpperCase
-        Properties.KeyFieldNames = 'kdCaraBayar'
-        Properties.ListColumns = <
-          item
-            Caption = 'CARA BAYAR'
-            FieldName = 'carabayar'
-          end>
-        Properties.ListSource = DataSimrs.dsCaraBayar
-        Properties.MaxLength = 150
-        TabOrder = 3
-        OnKeyPress = cbbCaraBayarKeyPress
-        Width = 393
-      end
-      object cbbPenjamin: TcxLookupComboBox
-        Left = 168
-        Top = 112
-        Properties.CharCase = ecUpperCase
-        Properties.KeyFieldNames = 'kdPenjamin'
-        Properties.ListColumns = <
-          item
-            Caption = 'PENJAMIN'
-            FieldName = 'penjamin'
-          end>
-        Properties.ListSource = DataSimrs.dsPenjamin
-        Properties.MaxLength = 200
-        TabOrder = 4
-        OnKeyPress = cbbPenjaminKeyPress
-        Width = 393
-      end
-      object cbbDokter: TcxLookupComboBox
-        Left = 168
-        Top = 296
-        Properties.CharCase = ecUpperCase
-        Properties.KeyFieldNames = 'kdPetugasMedis'
-        Properties.ListColumns = <
-          item
-            Caption = 'DOKTER'
-            FieldName = 'namaPetugasMedis'
-          end>
-        Properties.ListSource = DataSimrs.dsDokter
-        Properties.MaxLength = 100
-        TabOrder = 8
-        OnKeyPress = cbbDokterKeyPress
-        Width = 393
-      end
-      object cbbUnitPelayanan: TcxLookupComboBox
-        Left = 168
-        Top = 264
-        Properties.CharCase = ecUpperCase
-        Properties.KeyFieldNames = 'kdUnit'
-        Properties.ListColumns = <
-          item
-            Caption = 'UNIT'
-            MinWidth = 50
-            FieldName = 'unit'
-          end>
-        Properties.ListSource = DataSimrs.dswv_unitrajal
-        Properties.MaxLength = 50
-        TabOrder = 7
-        OnDblClick = cbbUnitPelayananDblClick
-        OnKeyPress = cbbUnitPelayananKeyPress
-        Width = 393
-      end
+    end
+    object grpDataPendaftaran: TGroupBox
+      Left = 649
+      Top = 1
+      Width = 1060
+      Height = 881
+      Align = alClient
+      Caption = 'DATA DAFTAR SEP'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
       object grpKeteranganTombol: TGroupBox
         Left = 2
-        Top = 493
-        Width = 584
-        Height = 89
-        Align = alBottom
+        Top = 728
+        Width = 215
+        Height = 158
+        Align = alCustom
         Caption = 'Keterangan Tombol Pintas'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -1139,7 +970,7 @@ object FPendaftaran: TFPendaftaran
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 5
+        TabOrder = 0
         object lblCtrlP: TLabel
           Left = 8
           Top = 24
@@ -1169,29 +1000,29 @@ object FPendaftaran: TFPendaftaran
           Caption = 'CTRL+T : TAMBAH'
         end
         object lblCTRLK: TLabel
-          Left = 192
-          Top = 21
+          Left = 8
+          Top = 85
           Width = 167
           Height = 16
           Caption = 'CTRL+K : KARTU BEROBAT'
         end
         object lblGelang: TLabel
-          Left = 192
-          Top = 37
+          Left = 8
+          Top = 101
           Width = 111
           Height = 16
           Caption = 'CTRL+G : GELANG'
         end
         object lblCTRLL: TLabel
-          Left = 192
-          Top = 53
+          Left = 8
+          Top = 117
           Width = 126
           Height = 16
           Caption = 'CTRL+L: LABEL 2X1'
         end
         object lblCTRLR: TLabel
-          Left = 192
-          Top = 69
+          Left = 8
+          Top = 133
           Width = 108
           Height = 16
           Caption = 'CTRL+R: KARCIS'
@@ -1206,13 +1037,13 @@ object FPendaftaran: TFPendaftaran
       end
       object grpKartuPenjamin: TGroupBox
         Left = 8
-        Top = 136
-        Width = 625
+        Top = 216
+        Width = 345
         Height = 121
         Caption = 'KARTU PENJAMIN'
-        TabOrder = 6
+        TabOrder = 1
         object lblNoKartu: TLabel
-          Left = 16
+          Left = 8
           Top = 32
           Width = 71
           Height = 18
@@ -1225,7 +1056,7 @@ object FPendaftaran: TFPendaftaran
           ParentFont = False
         end
         object lblNoSEP: TLabel
-          Left = 17
+          Left = 9
           Top = 61
           Width = 59
           Height = 18
@@ -1238,7 +1069,7 @@ object FPendaftaran: TFPendaftaran
           ParentFont = False
         end
         object lblAtasNama: TLabel
-          Left = 16
+          Left = 8
           Top = 88
           Width = 80
           Height = 18
@@ -1251,44 +1082,315 @@ object FPendaftaran: TFPendaftaran
           ParentFont = False
         end
         object edtNoKartu: TEdit
-          Left = 160
+          Left = 96
           Top = 24
-          Width = 393
+          Width = 241
           Height = 27
           TabOrder = 0
           OnKeyPress = edtNoKartuKeyPress
         end
         object edtNoSep: TEdit
-          Left = 160
+          Left = 96
           Top = 56
-          Width = 393
+          Width = 241
           Height = 27
           TabOrder = 1
           OnKeyPress = edtNoSepKeyPress
         end
         object edtAtasNama: TEdit
-          Left = 160
+          Left = 96
           Top = 88
-          Width = 393
+          Width = 241
           Height = 27
           TabOrder = 2
           OnKeyPress = edtAtasNamaKeyPress
         end
       end
-      object edtIsiAsalPasien: TEdit
-        Left = 168
-        Top = 57
-        Width = 393
-        Height = 27
+      object cxgrpbxPoliTujuan: TcxGroupBox
+        Left = 8
+        Top = 344
+        Caption = 'POLI TUJUAN'
         TabOrder = 2
-        OnKeyPress = edtIsiAsalPasienKeyPress
+        Height = 113
+        Width = 345
+        object lblUnitPelayanan: TLabel
+          Left = 8
+          Top = 23
+          Width = 38
+          Height = 18
+          Caption = 'POLI'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblDokter: TLabel
+          Left = 8
+          Top = 63
+          Width = 51
+          Height = 18
+          Caption = 'Dokter'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object cbbUnitPelayanan: TcxLookupComboBox
+          Left = 96
+          Top = 22
+          Properties.CharCase = ecUpperCase
+          Properties.DropDownWidth = 400
+          Properties.KeyFieldNames = 'kdUnit'
+          Properties.ListColumns = <
+            item
+              Caption = 'UNIT'
+              MinWidth = 50
+              FieldName = 'unit'
+            end>
+          Properties.ListSource = DataSimrs.dswv_unitrajal
+          Properties.MaxLength = 50
+          TabOrder = 0
+          OnDblClick = cbbUnitPelayananDblClick
+          OnKeyPress = cbbUnitPelayananKeyPress
+          Width = 241
+        end
+        object cbbDokter: TcxLookupComboBox
+          Left = 96
+          Top = 54
+          Properties.CharCase = ecUpperCase
+          Properties.DropDownWidth = 400
+          Properties.KeyFieldNames = 'kdPetugasMedis'
+          Properties.ListColumns = <
+            item
+              Caption = 'DOKTER'
+              FieldName = 'namaPetugasMedis'
+            end>
+          Properties.ListSource = DataSimrs.dsDokter
+          Properties.MaxLength = 100
+          TabOrder = 1
+          OnKeyPress = cbbDokterKeyPress
+          Width = 241
+        end
+      end
+      object grpDataTampilSetelahPilihUnit: TGroupBox
+        Left = 8
+        Top = 464
+        Width = 345
+        Height = 89
+        Caption = 'Tampil Setelah Pilih Poli'
+        TabOrder = 3
+        object lblKarciPendaftaran: TLabel
+          Left = 8
+          Top = 24
+          Width = 143
+          Height = 18
+          Caption = 'Karcis Pendaftaran'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblKonsulTasiDokter: TLabel
+          Left = 8
+          Top = 62
+          Width = 145
+          Height = 19
+          Caption = 'Konsultasi Dokter'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object edtKarcisPendaftaran: TEdit
+          Left = 160
+          Top = 24
+          Width = 177
+          Height = 27
+          CharCase = ecUpperCase
+          TabOrder = 0
+          OnKeyPress = edtKarcisPendaftaranKeyPress
+        end
+        object edtKonsulDokter: TEdit
+          Left = 160
+          Top = 54
+          Width = 177
+          Height = 27
+          CharCase = ecUpperCase
+          TabOrder = 1
+          OnKeyPress = edtKonsulDokterKeyPress
+        end
+      end
+      object cxgrpbxCaraKunjungan: TcxGroupBox
+        Left = 8
+        Top = 21
+        Caption = 'CARA KUNJUNGAN'
+        TabOrder = 4
+        Height = 97
+        Width = 345
+        object lblAsalPasien: TLabel
+          Left = 8
+          Top = 32
+          Width = 86
+          Height = 18
+          Caption = 'Asal Pasien'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lbl2: TLabel
+          Left = 8
+          Top = 60
+          Width = 97
+          Height = 18
+          Caption = 'Asal Rujukan'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object cbbAsalPasien: TcxLookupComboBox
+          Left = 112
+          Top = 24
+          Properties.CharCase = ecUpperCase
+          Properties.KeyFieldNames = 'kdAsalPasien'
+          Properties.ListColumns = <
+            item
+              Caption = 'ASAL PASIEN'
+              FieldName = 'asalPasien'
+            end>
+          Properties.ListSource = DataSimrs.dsVw_dsAsalPasien
+          TabOrder = 0
+          OnKeyPress = cbbAsalPasienKeyPress
+          Width = 225
+        end
+        object edtIsiAsalPasien: TEdit
+          Left = 112
+          Top = 57
+          Width = 225
+          Height = 27
+          TabOrder = 1
+          OnKeyPress = edtIsiAsalPasienKeyPress
+        end
+      end
+      object cxgrpbxCaraBayar: TcxGroupBox
+        Left = 8
+        Top = 125
+        Caption = 'CARA BAYAR'
+        TabOrder = 5
+        Height = 89
+        Width = 345
+        object lblCaraBayar: TLabel
+          Left = 9
+          Top = 26
+          Width = 83
+          Height = 18
+          Caption = 'Cara Bayar'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblPenjamin: TLabel
+          Left = 8
+          Top = 53
+          Width = 69
+          Height = 18
+          Caption = 'Penjamin'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object cbbCaraBayar: TcxLookupComboBox
+          Left = 104
+          Top = 24
+          Properties.CharCase = ecUpperCase
+          Properties.KeyFieldNames = 'kdCaraBayar'
+          Properties.ListColumns = <
+            item
+              Caption = 'CARA BAYAR'
+              FieldName = 'carabayar'
+            end>
+          Properties.ListSource = DataSimrs.dsCaraBayar
+          Properties.MaxLength = 150
+          TabOrder = 0
+          OnKeyPress = cbbCaraBayarKeyPress
+          Width = 233
+        end
+        object cbbPenjamin: TcxLookupComboBox
+          Left = 104
+          Top = 56
+          Properties.CharCase = ecUpperCase
+          Properties.KeyFieldNames = 'kdPenjamin'
+          Properties.ListColumns = <
+            item
+              Caption = 'PENJAMIN'
+              FieldName = 'penjamin'
+            end>
+          Properties.ListSource = DataSimrs.dsPenjamin
+          Properties.MaxLength = 200
+          TabOrder = 1
+          OnKeyPress = cbbPenjaminKeyPress
+          Width = 233
+        end
+      end
+      object pnlIsiRujukan: TPanel
+        Left = 368
+        Top = 48
+        Width = 681
+        Height = 833
+        TabOrder = 6
+      end
+      object btnRujukanManual: TButton
+        Left = 368
+        Top = 16
+        Width = 177
+        Height = 25
+        Caption = 'RUJUKAN MANUAL'
+        TabOrder = 7
+        OnClick = btnRujukanManualClick
+      end
+      object btnRujukanOnline: TButton
+        Left = 552
+        Top = 16
+        Width = 177
+        Height = 25
+        Caption = 'RUJUKAN ONLINE'
+        TabOrder = 8
+        OnClick = btnRujukanOnlineClick
+      end
+      object btnCOPYNOREGISTRASI: TButton
+        Left = 8
+        Top = 568
+        Width = 353
+        Height = 25
+        Caption = 'NO REGISTRASI KE RUJUKAN MANUAL'
+        TabOrder = 9
+        OnClick = btnCOPYNOREGISTRASIClick
       end
     end
   end
   object statSimrs: TStatusBar
     Left = 0
-    Top = 764
-    Width = 1456
+    Top = 973
+    Width = 1920
     Height = 19
     Panels = <
       item
@@ -1305,8 +1407,8 @@ object FPendaftaran: TFPendaftaran
       end>
   end
   object actlstShoutcut: TActionList
-    Left = 1073
-    Top = 594
+    Left = 897
+    Top = 730
     object actPasienLama: TAction
       Caption = 'actPasienLama'
       SecondaryShortCuts.Strings = (
@@ -1388,8 +1490,8 @@ object FPendaftaran: TFPendaftaran
       'konsulDokter=konsulDokter')
     DataSource = DataSimrs.dsvw_pasienrawatjalan
     BCDToCurrency = False
-    Left = 905
-    Top = 586
+    Left = 897
+    Top = 642
   end
   object frxdbdtstPasien: TfrxDBDataset
     UserName = 'frxDBDatasetPasien'
@@ -1428,11 +1530,11 @@ object FPendaftaran: TFPendaftaran
       'noTelepone=noTelepone')
     DataSource = DataSimrs.dsVwPasien
     BCDToCurrency = False
-    Left = 825
-    Top = 594
+    Left = 817
+    Top = 650
   end
   object frxrprtGelang: TfrxReport
-    Version = '4.12.6'
+    Version = '4.9.35'
     DataSet = frxdbdtstPasien
     DataSetName = 'frxDBDatasetPasien'
     DotMatrixReport = False
@@ -1448,8 +1550,8 @@ object FPendaftaran: TFPendaftaran
       'begin'
       ''
       'end.')
-    Left = 985
-    Top = 610
+    Left = 977
+    Top = 666
     Datasets = <
       item
         DataSet = frxdbdtstPasien
@@ -1580,7 +1682,7 @@ object FPendaftaran: TFPendaftaran
     end
   end
   object frxrprtKarcis: TfrxReport
-    Version = '4.12.6'
+    Version = '4.9.35'
     DataSet = frxdbdtstKarcis
     DataSetName = 'frxDBDataset1'
     DotMatrixReport = False
@@ -1597,8 +1699,8 @@ object FPendaftaran: TFPendaftaran
       'begin'
       ''
       'end.')
-    Left = 1137
-    Top = 610
+    Left = 753
+    Top = 746
     Datasets = <
       item
         DataSet = frxdbdtstKarcis
@@ -1889,7 +1991,7 @@ object FPendaftaran: TFPendaftaran
     end
   end
   object frxrprtKartuBerobat: TfrxReport
-    Version = '4.12.6'
+    Version = '4.9.35'
     DataSet = frxdbdtstPasien
     DataSetName = 'frxDBDatasetPasien'
     DotMatrixReport = False
@@ -1911,8 +2013,8 @@ object FPendaftaran: TFPendaftaran
       'begin'
       ''
       'end.')
-    Left = 737
-    Top = 594
+    Left = 729
+    Top = 650
     Datasets = <
       item
         DataSet = frxdbdtstPasien
@@ -2040,7 +2142,7 @@ object FPendaftaran: TFPendaftaran
     end
   end
   object frxrprtLabel: TfrxReport
-    Version = '4.12.6'
+    Version = '4.9.35'
     DataSet = frxdbdtstPasien
     DataSetName = 'frxDBDatasetPasien'
     DotMatrixReport = False
@@ -2057,8 +2159,8 @@ object FPendaftaran: TFPendaftaran
       'begin'
       ''
       'end.')
-    Left = 681
-    Top = 618
+    Left = 673
+    Top = 674
     Datasets = <
       item
         DataSet = frxdbdtstPasien
@@ -2238,7 +2340,7 @@ object FPendaftaran: TFPendaftaran
     end
   end
   object frxrprtLabelVersiPdc: TfrxReport
-    Version = '4.12.6'
+    Version = '4.9.35'
     DataSet = frxdbdtstPasien
     DataSetName = 'frxDBDatasetPasien'
     DotMatrixReport = False
@@ -2254,8 +2356,8 @@ object FPendaftaran: TFPendaftaran
       'begin'
       ''
       'end.')
-    Left = 1193
-    Top = 586
+    Left = 809
+    Top = 722
     Datasets = <
       item
         DataSet = frxdbdtstPasien
@@ -2430,11 +2532,18 @@ object FPendaftaran: TFPendaftaran
     end
   end
   object mm1: TMainMenu
-    Left = 1066
-    Top = 75
+    Left = 754
+    Top = 51
     object SETINGPRINTER1: TMenuItem
-      Caption = 'SETTING PRINTER'
-      OnClick = SETINGPRINTER1Click
+      Caption = 'SETTING'
+      object PRINTER1: TMenuItem
+        Caption = 'PRINTER'
+        OnClick = PRINTER1Click
+      end
+      object LINK1: TMenuItem
+        Caption = 'LINK APP'
+        OnClick = LINK1Click
+      end
     end
     object DESAINPRINT1: TMenuItem
       Caption = 'DESAIN PRINT'
@@ -2459,6 +2568,13 @@ object FPendaftaran: TFPendaftaran
       Caption = 'DAFTAR RAWAT INAP'
       OnClick = DAFTARRAWATINAP1Click
     end
+    object UPDATER1: TMenuItem
+      Caption = 'BANTUAN'
+      object VERSIAPP1: TMenuItem
+        Caption = 'VERSI APP'
+        OnClick = VERSIAPP1Click
+      end
+    end
   end
   object frxdsgnr1: TfrxDesigner
     DefaultScriptLanguage = 'PascalScript'
@@ -2477,7 +2593,7 @@ object FPendaftaran: TFPendaftaran
     Restrictions = []
     RTLLanguage = False
     MemoParentFont = False
-    Left = 1129
-    Top = 562
+    Left = 745
+    Top = 698
   end
 end

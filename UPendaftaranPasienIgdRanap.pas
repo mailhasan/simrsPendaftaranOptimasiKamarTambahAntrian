@@ -17,7 +17,8 @@ uses
   dxSkinsdxNavBar2Painter, cxContainer, cxEdit, cxTextEdit, cxMaskEdit,
   cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
   StdCtrls, ComCtrls, dxNavBarCollns, cxClasses, dxNavBarBase, dxNavBar,
-  ExtCtrls, frxClass, frxDBSet, Menus, ActnList, frxDesgn;
+  ExtCtrls, frxClass, frxDBSet, Menus, ActnList, frxDesgn,
+  dxSkinscxPCPainter, cxPC, cxButtons;
 
 type
   TFPendaftaranPasienRawatInap = class(TForm)
@@ -67,19 +68,6 @@ type
     dxnvbrtmMenuItemInfoTersediaKamar: TdxNavBarItem;
     dxnvbrtmMenuItemDaftarDataPasienRanap: TdxNavBarItem;
     pnlTegah: TPanel;
-    pnlAtas1: TPanel;
-    grpNoRm: TGroupBox;
-    lblTanggal: TLabel;
-    lblNoRekamedis: TLabel;
-    dtpTanggal: TDateTimePicker;
-    edtNoRekamedis: TEdit;
-    btnPasienBaru: TButton;
-    btnPasienLama: TButton;
-    grpNoRegistrasi: TGroupBox;
-    lblNoRegistrasi: TLabel;
-    lblKunjungan: TLabel;
-    edtNoRegistrasi: TEdit;
-    edtKunjungan: TEdit;
     grpDataPasien: TGroupBox;
     lblNoIdentitas: TLabel;
     lblNama: TLabel;
@@ -116,16 +104,6 @@ type
     edtAgama: TEdit;
     edtLamaBaru: TEdit;
     edtNoTelepone: TEdit;
-    grpKeteranganTombol: TGroupBox;
-    lblCtrlP: TLabel;
-    lblctrlB: TLabel;
-    lblCTRLS: TLabel;
-    lblCTRLT: TLabel;
-    lblCTRLK: TLabel;
-    lblGelang: TLabel;
-    lblCTRLL: TLabel;
-    lblCTRLR: TLabel;
-    lblESC: TLabel;
     grpDataPendaftaran: TGroupBox;
     lblAsalPasien: TLabel;
     lblCaraBayar: TLabel;
@@ -217,22 +195,11 @@ type
     edtLamaBaruUgd: TEdit;
     edtNoTeleponeIgd: TEdit;
     grpDataDaftarUgd: TGroupBox;
-    lbl2: TLabel;
-    lbl3: TLabel;
-    lbl5: TLabel;
-    lbl6: TLabel;
-    lbl7: TLabel;
-    lbl24: TLabel;
     grp2: TGroupBox;
     lbl8: TLabel;
     lbl9: TLabel;
     edtKarcisUgd: TEdit;
     edtKonsultasiUgd: TEdit;
-    cbbAsalPasienUgd: TcxLookupComboBox;
-    cbbCaraBayarUgd: TcxLookupComboBox;
-    cbbPenjaminUgd: TcxLookupComboBox;
-    cbbDokterUgd: TcxLookupComboBox;
-    edtIsiAsalRujukan: TEdit;
     grp5: TGroupBox;
     lbl25: TLabel;
     lbl26: TLabel;
@@ -240,7 +207,6 @@ type
     edtNoKartuUgd: TEdit;
     edtNoSepUgd: TEdit;
     edtAtasNamaUgd: TEdit;
-    cbbJadwalDokterUgd: TComboBox;
     grp4: TGroupBox;
     lbl14: TLabel;
     lbl15: TLabel;
@@ -251,19 +217,6 @@ type
     lbl20: TLabel;
     lbl21: TLabel;
     lbl22: TLabel;
-    pnlAtasIgd1: TPanel;
-    grp1: TGroupBox;
-    lbl10: TLabel;
-    lbl11: TLabel;
-    dtpTanggalUgd: TDateTimePicker;
-    edtNoRekamedisUgd: TEdit;
-    btnPasienLamaIgd: TButton;
-    btnBaru: TButton;
-    grp3: TGroupBox;
-    lbl12: TLabel;
-    lbl13: TLabel;
-    edtNoRegistrasiUgd: TEdit;
-    edtKunjunganKeUgd: TEdit;
     pnlKananUgd: TPanel;
     dxnvbrUgd: TdxNavBar;
     dxnvbrgrpUgd: TdxNavBarGroup;
@@ -284,6 +237,62 @@ type
     DESAINPRINT1: TMenuItem;
     label2x1IGD1: TMenuItem;
     frxdsgnr1: TfrxDesigner;
+    lbl10: TLabel;
+    lbl11: TLabel;
+    edtNoRekamedisUgd: TEdit;
+    dtpTanggalUgd: TDateTimePicker;
+    btnBaru: TButton;
+    btnPasienLamaIgd: TButton;
+    lbl12: TLabel;
+    lbl13: TLabel;
+    edtKunjunganKeUgd: TEdit;
+    edtNoRegistrasiUgd: TEdit;
+    grpCaraKunjungan: TGroupBox;
+    lbl2: TLabel;
+    lbl24: TLabel;
+    edtIsiAsalRujukan: TEdit;
+    cbbAsalPasienUgd: TcxLookupComboBox;
+    grpCaraBayar: TGroupBox;
+    lbl3: TLabel;
+    lbl7: TLabel;
+    cbbPenjaminUgd: TcxLookupComboBox;
+    cbbCaraBayarUgd: TcxLookupComboBox;
+    lbl5: TLabel;
+    cbbDokterUgd: TcxLookupComboBox;
+    lbl6: TLabel;
+    cbbJadwalDokterUgd: TComboBox;
+    btnRujukanManual: TcxButton;
+    pnlIsiRujukan: TPanel;
+    btnRujukan: TcxButton;
+    dxnvbrtmUpdateStatusPulang: TdxNavBarItem;
+    btnGelangP: TButton;
+    lblTanggal: TLabel;
+    dtpTanggal: TDateTimePicker;
+    btnPasienLama: TButton;
+    lblKunjungan: TLabel;
+    edtKunjungan: TEdit;
+    lblNoRekamedis: TLabel;
+    edtNoRekamedis: TEdit;
+    btnPasienBaru: TButton;
+    lblNoRegistrasi: TLabel;
+    edtNoRegistrasi: TEdit;
+    grpKeteranganTombol: TGroupBox;
+    lblCtrlP: TLabel;
+    lblctrlB: TLabel;
+    lblCTRLS: TLabel;
+    lblCTRLT: TLabel;
+    lblCTRLK: TLabel;
+    lblGelang: TLabel;
+    lblCTRLL: TLabel;
+    lblCTRLR: TLabel;
+    lblESC: TLabel;
+    pnlPanelIsiRujukanRanap: TPanel;
+    btnRujukanManualRanap: TcxButton;
+    btnRujukanRanap: TcxButton;
+    btnVklaim: TButton;
+    dxnvbrtmUgdEDITPENJAMIN: TdxNavBarItem;
+    lblMaritalStatus: TLabel;
+    edtMaritalStatuUgd: TEdit;
     procedure SETTINGPRINTER1Click(Sender: TObject);
     procedure btnPasienLamaIgdClick(Sender: TObject);
     procedure btnBaruClick(Sender: TObject);
@@ -318,7 +327,6 @@ type
     procedure edtKonsultasiUgdKeyPress(Sender: TObject; var Key: Char);
     procedure btnPasienLamaClick(Sender: TObject);
     procedure dxnvbrtmMenuItemKeluarClick(Sender: TObject);
-    procedure dxnvbrtmMenuItemEditClick(Sender: TObject);
     procedure dxnvbrtmMenuItemRiwayatKunjunganClick(Sender: TObject);
     procedure dxnvbrtmMenuItemKoreksiKeluargaClick(Sender: TObject);
     procedure dxnvbrtmMenuItemBataslPasienClick(Sender: TObject);
@@ -351,6 +359,16 @@ type
     procedure dxnvbrtmMenuItemLaporanClick(Sender: TObject);
     procedure dxnvbrtmLaporanUgdClick(Sender: TObject);
     procedure label2x1IGD1Click(Sender: TObject);
+    procedure btnRujukanManualClick(Sender: TObject);
+    procedure dxnvbrtmUpdateStatusPulangClick(Sender: TObject);
+    procedure btnRujukanClick(Sender: TObject);
+    procedure dxnvbrtmMenuItemEditClick(Sender: TObject);
+    procedure dxnvbrtmMenuItemEditPenjaminClick(Sender: TObject);
+    procedure btnGelangPClick(Sender: TObject);
+    procedure btnRujukanManualRanapClick(Sender: TObject);
+    procedure btnRujukanRanapClick(Sender: TObject);
+    procedure btnVklaimClick(Sender: TObject);
+    procedure dxnvbrtmUgdEDITPENJAMINClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -363,10 +381,15 @@ type
     procedure koneksiPcRanap;
     procedure printKartuBerobat;
     procedure printGelang;
+    procedure PrinterGelangP;
     procedure printKarcisPasien;
     procedure printLabel2x1Ranap;
     procedure printKartuBerobatRanap;
     procedure printGelangRanap;
+    procedure TampilsettingLink;
+    procedure tampilAsalPasien;
+    procedure tampilCaraBayar;
+    procedure tampilPenjamin;
   end;
 
 var
@@ -375,10 +398,11 @@ var
 implementation
 
 uses UDataSimrs, USettingPrinter, UDataPendaftaranPasien,
-      UDataPasienBaruIgd,UPendaftaran, URiwayatKunjunganPasien,
-  UDaftarBiodataPx, UDataDaftarPasienIgd, UDaftarPasienRawatInap,
-  UDaftarDataPasienHariIniRanap,UCariKamarRawatInap, ADODB, DB,
-  UInformasiKetersedianRawatInap,UKelas;
+    UDataPasienBaruIgd,UPendaftaran, URiwayatKunjunganPasien,
+    UDaftarBiodataPx, UDataDaftarPasienIgd, UDaftarPasienRawatInap,
+    UDaftarDataPasienHariIniRanap,UCariKamarRawatInap, ADODB, DB,
+    UInformasiKetersedianRawatInap,UKelas,URujukanManualBpjs,
+    UUpdatePulangSep,URujukanSep;
 
 {$R *.dfm}
 // Cek Nama Komputer
@@ -467,6 +491,7 @@ begin
    edtJkUgd.Clear;
    edtPendidikanUgd.Clear;
    edtPekerjaanUgd.Clear;
+   edtMaritalStatuUgd.Clear;
    mmoAlamatUgd.Clear;
    edtKelurahanUgd.Clear;
    edtKecamatanUgd.Clear;
@@ -521,11 +546,23 @@ if edtNoRekamedisUgd.Text = '' then
       SQL.Text := 'select * from t_pasien where noRekamedis="'+edtNoRekamedisUgd.Text+'"';
       Open;
 
-    frxrprtLabel.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\label2x1IGD.fr3');
-    frxrprtLabel.PrintOptions.Printer:= DataSimrs.qryt_komputer.FieldByname('printerLabel').AsString;
-      //frxrprtKartuBerobat.PrintOptions.ShowDialog:=True;
-    frxrprtLabel.PrepareReport;
-    frxrprtLabel.ShowReport();
+      with DataSimrs.qryt_komputer do
+      begin
+        Close;
+        SQL.Clear;
+        SQL.Text := 'select * from t_komputer where namaKomputer="' + GetComputerNameFromWindows + '"';
+        Open;
+      end;
+
+      TampilsettingLink;
+
+      ///frxrprtLabel.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\label2x1IGD.fr3');
+
+      frxrprtLabel.LoadFromFile(Trim(DataSimrs.qryt_settinglinkapplainpendaftaran['label2x1'])+'\label2x1IGD.fr3');
+      frxrprtLabel.PrintOptions.Printer:= DataSimrs.qryt_komputer.FieldByname('printerLabel').AsString;
+        //frxrprtKartuBerobat.PrintOptions.ShowDialog:=True;
+      frxrprtLabel.PrepareReport;
+      frxrprtLabel.ShowReport();
     end
 end;
 end;
@@ -573,7 +610,10 @@ if  edtNoRekamedisUgd.Text = '' then
           Open;
         end;
 
-        frxrprtKartuBerobat.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\kartuberobat.fr3');
+        TampilsettingLink;
+
+        ///frxrprtKartuBerobat.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\kartuberobat.fr3');
+        frxrprtKartuBerobat.LoadFromFile(Trim(DataSimrs.qryt_settinglinkapplainpendaftaran['kartu'])+'\kartuberobat.fr3');
         frxrprtKartuBerobat.PrintOptions.Printer:= DataSimrs.qryt_komputer.FieldByname('printerKartu').AsString;
         //frxrprtKartuBerobat.PrintOptions.ShowDialog:=True;
         frxrprtKartuBerobat.PrepareReport;
@@ -604,8 +644,43 @@ if (edtNoRekamedisUgd.Text = '') then
           Open;
        end;
 
-      frxrprtGelang.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\gelangIGD.fr3');
+      TampilsettingLink; 
+
+      ///frxrprtGelang.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\gelangIGD.fr3');
+      frxrprtGelang.LoadFromFile(Trim(DataSimrs.qryt_settinglinkapplainpendaftaran['gelang'])+'\gelangIGD.fr3');
       frxrprtGelang.PrintOptions.Printer:= DataSimrs.qryt_komputer.FieldByname('printerGelang').AsString;
+      frxrprtKartuBerobat.PrintOptions.ShowDialog:=True;
+      frxrprtGelang.PrepareReport;
+      frxrprtGelang.Print;
+  end;
+end;
+
+///print gelang pasien UGD Perempuan
+procedure TFPendaftaranPasienRawatInap.PrinterGelangP;
+begin
+if (edtNoRekamedisUgd.Text = '') then
+    MessageDlg('Data Masih Ada Yang Belum Di isi...!',mtInformation,[mbok],0)
+  else
+  begin
+     with DataSimrs.qryVwPasien do
+      begin
+        Close;
+        SQL.Clear;
+        SQL.Text := 'select * from t_pasien where noRekamedis="'+edtNoRekamedisUgd.Text+'"';
+        Open;
+      end;
+      with DataSimrs.qryt_komputer do
+      begin
+          Close;
+          SQL.Clear;
+          SQL.Text := 'select * from t_komputer where namaKomputer="'+GetComputerNameFromWindows+'"';
+          Open;
+       end;
+
+      TampilsettingLink;
+
+      frxrprtGelang.LoadFromFile(Trim(DataSimrs.qryt_settinglinkapplainpendaftaran['gelang'])+'\gelangIGD.fr3');
+      frxrprtGelang.PrintOptions.Printer:= DataSimrs.qryt_komputer.FieldByname('PrinterGelangPerempuan').AsString;
       frxrprtKartuBerobat.PrintOptions.ShowDialog:=True;
       frxrprtGelang.PrepareReport;
       frxrprtGelang.Print;
@@ -637,7 +712,10 @@ begin
         Open;
       end;
 
-      frxrprtKarcis.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\karcisIGD.fr3');
+      TampilsettingLink;
+
+      ///frxrprtKarcis.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\karcisIGD.fr3');
+      frxrprtKarcis.LoadFromFile(Trim(DataSimrs.qryt_settinglinkapplainpendaftaran['karcis'])+'\karcisIGD.fr3');
       frxrprtKarcis.PrintOptions.Printer:= DataSimrs.qryt_komputer['printerKarcis'];
       frxrprtKarcis.PrintOptions.ShowDialog:=True;
       frxrprtKarcis.PrepareReport;
@@ -662,7 +740,7 @@ if edtNoRekamedis.Text = '' then
       Open;
 
 
-    frxrprtLabel.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\label2x1IGD.fr3');
+    frxrprtLabel.LoadFromFile(Trim(DataSimrs.qryt_settinglinkapplainpendaftaran['label2x1'])+'\label2x1IGD.fr3');
     frxrprtLabel.PrintOptions.Printer:= DataSimrs.qryt_komputer.FieldByname('printerLabel').AsString;
     //frxrprtKartuBerobat.PrintOptions.ShowDialog:=True;
     frxrprtLabel.PrepareReport;
@@ -686,15 +764,18 @@ if  edtNoRekamedis.Text = '' then
         Open;
         
       end;
+      
       with DataSimrs.qryt_komputer do
-        begin
-          Close;
-          SQL.Clear;
-          SQL.Text := 'select * from t_komputer where namaKomputer="'+GetComputerNameFromWindows+'"';
-          Open;
-        end;
+      begin
+        Close;
+        SQL.Clear;
+        SQL.Text := 'select * from t_komputer where namaKomputer="'+GetComputerNameFromWindows+'"';
+        Open;
+      end;
 
-        frxrprtKartuBerobat.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\kartuberobatIGD.fr3');
+      TampilsettingLink;
+
+        frxrprtKartuBerobat.LoadFromFile(Trim(DataSimrs.qryt_settinglinkapplainpendaftaran['kartu'])+'\kartuberobatIGD.fr3');
         frxrprtKartuBerobat.PrintOptions.Printer:= DataSimrs.qryt_komputer.FieldByname('printerKartu').AsString;
         //frxrprtKartuBerobat.PrintOptions.ShowDialog:=True;
         frxrprtKartuBerobat.PrepareReport;
@@ -725,7 +806,9 @@ begin
           Open;
        end;
 
-        frxrprtGelang.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\gelang.fr3');
+       TampilsettingLink;
+
+        frxrprtGelang.LoadFromFile(Trim(DataSimrs.qryt_settinglinkapplainpendaftaran['gelang'])+'\gelang.fr3');
         frxrprtGelang.PrintOptions.Printer:= DataSimrs.qryt_komputer.FieldByname('printerGelang').AsString;
         frxrprtKartuBerobat.PrintOptions.ShowDialog:=True;
         frxrprtGelang.PrepareReport;
@@ -733,8 +816,51 @@ begin
   end;
 end;
 
+procedure TFPendaftaranPasienRawatInap.TampilsettingLink;
+begin
+  with DataSimrs.qryt_settinglinkapplainpendaftaran do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'select * from t_settinglinkapplainpendaftaran where idsettinglinkapplainpendaftaran=1';
+    Open;
+  end;
+end;
 
+/// procedure tampil asal pasien
+procedure TFPendaftaranPasienRawatInap.tampilAsalPasien;
+begin
+  with DataSimrs.qryVw_AsalPasien do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'select * from vw_asalpasien';
+    Open;
+  end;
+end;
 
+/// procedure tampil cara bayar
+procedure TFPendaftaranPasienRawatInap.tampilCaraBayar;
+begin
+  with DataSimrs.qryCaraBayar do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'select * from t_carabayar';
+    Open;
+  end;
+end;
+/// procedure tampil penjamin
+procedure TFPendaftaranPasienRawatInap.tampilPenjamin;
+begin
+  with DataSimrs.qryPenjamin do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'select * from t_penjamin';
+    Open;
+  end;
+end;
 
 procedure TFPendaftaranPasienRawatInap.SETTINGPRINTER1Click(
   Sender: TObject);
@@ -801,12 +927,22 @@ begin
     if DataSimrs.qryVwPasien.RecordCount >= 1 then
     begin
       noRmIgd := DataSimrs.qryVwPasien.Fieldbyname('noRekamedis').AsString;
-      
+
+      /// query pengujian pasien terdaftar di IGD
       with DataSimrs.qryvw_pasienrawatjalan do
       begin
         Close;
         SQL.Clear;
         SQL.Text := 'select noRekamedis,statusKeluar,unit from vw_pasienrawatjalan where (noRekamedis="'+noRmIgd+'") and (statusKeluar="Di Rawat IGD") limit 50';
+        Open;
+      end;
+
+      /// query pengujian pasien terdaftar di rawat inap
+      with DataSimrs.qryvw_pasienrawatinap do
+      begin
+        Close;
+        SQL.Clear;
+        SQL.Text := 'select noRekamedis,statusKeluar,rawatInap,tglDaftar from vw_pasienrawatinap where noRekamedis="'+noRmIgd+'" and statusKeluar="Di Rawat Inap" limit 50';
         Open;
       end;
 
@@ -816,7 +952,12 @@ begin
           ShowMessage('Pasien Masih Terdaftar Di "'+DataSimrs.qryvw_pasienrawatjalan['unit']+'"');
           FDataPendaftaranPasien.isiPasienIgd;
       end
+      /// pengujian masih terdaftar di Rawat inap
+      else if (DataSimrs.qryvw_pasienrawatinap.FieldByName('noRekamedis').AsString = noRmIgd) or
+            (DataSimrs.qryvw_pasienrawatinap.FieldByName('statusKeluar').AsString = 'Di Rawat Inap') then
+            ShowMessage('Pasien Masih Terdaftar Di Ruang/TGL "'+DataSimrs.qryvw_pasienrawatinap['rawatInap']+'"/"'+DataSimrs.qryvw_pasienrawatinap.Fieldbyname('tglDaftar').AsString+'"')
       else
+
       begin
         FDataPendaftaranPasien.isiPasienIgd;
         noRegistrasiUgd;
@@ -829,15 +970,15 @@ begin
         end;
       end;
 
-     with DataSimrs.qrywv_unitrajal do
-     begin
-      Close;
-      SQL. Clear;
-      SQL.Text := 'select * from vw_unitrajal where kdUnit="4001"';
-      Open;
-     end;
-     edtKarcisUgd.Text := FloatToStr(0);
-     edtKonsultasiUgd.Text := FloatToStr(DataSimrs.qrywv_unitrajal['jasaMedis']);
+      with DataSimrs.qrywv_unitrajal do
+      begin
+        Close;
+        SQL. Clear;
+        SQL.Text := 'select * from vw_unitrajal where kdUnit="4001"';
+        Open;
+      end;
+      edtKarcisUgd.Text := FloatToStr(0);
+      edtKonsultasiUgd.Text := FloatToStr(DataSimrs.qrywv_unitrajal['jasaMedis']);
 
     end
 end;
@@ -868,21 +1009,111 @@ end;
 procedure TFPendaftaranPasienRawatInap.actSimpanIgdExecute(
   Sender: TObject);
 var
-  tgldaftarIgd,noRegIgd :String;
+  tgldaftarIgd,noRegIgd,asalPx, crBy, pjm :String;
 begin
 /// Pengujian Jika Ada Data Yang Masih kosong
-if (cbbAsalPasienUgd.Text = '') or (cbbCaraBayarUgd.Text='') or (cbbPenjaminUgd.Text='') or
-   (cbbDokterUgd.Text='') or (cbbJadwalDokterUgd.Text='') then
-        MessageDlg('Data Di Lengkapi...!',mtWarning,[mbok],0)
+if (cbbAsalPasienUgd.Text = '') then
+    MessageDlg('Data Asal Pasien Di Isi Lengkap...!',mtWarning,[mbok],0)
+else if  (cbbCaraBayarUgd.Text='') then
+    MessageDlg('Data Cara Bayar Di Isi Lengkap...!',mtWarning,[mbok],0)
+else if  (cbbPenjaminUgd.Text='') then
+    MessageDlg('Data Penjamin Di Isi Lengkap...!',mtWarning,[mbok],0)
+else if (cbbDokterUgd.Text='')  then
+    MessageDlg('Data Dokter Di Isi Lengkap...!',mtWarning,[mbok],0)
+else if (cbbJadwalDokterUgd.Text='') then
+    MessageDlg('Data Jadwal Di Isi Lengkap...!',mtWarning,[mbok],0)
    else
    begin
      /// pengujian no Daftar sudah terdaftar
+     with DataSimrs.qryt_registrasi do
+     begin
+       Close;
+       SQL.Clear;
+       SQL.Text := 'select noDaftar from t_registrasi where noDaftar="'+edtNoRegistrasiUgd.Text+'" ';
+       Open;
+     end;
+
      if DataSimrs.qryt_registrasi.Locate('noDaftar',edtNoRegistrasiUgd.Text,[])  then
         MessageDlg('Data Sudah Ada, Klik Tombol Tambah Untuk Pasien Baru!!',mtWarning,[mbok],0)
      else
      begin
 
         tgldaftarIgd := FormatDateTime('yyyy-MM-dd HH:mm:ss',dtpTanggalUgd.DateTime);
+
+          ///isi asal pasien
+        with DataSimrs.qryVw_AsalPasien do
+        begin
+          Close;
+          SQL.Clear;
+          SQL.Text := 'select * from Vw_AsalPasien where kdAsalPasien="' + cbbAsalPasienUgd.EditValue + '"';
+          Open;
+        end;
+
+        if cbbAsalPasienUgd.EditValue <> DataSimrs.qryVw_AsalPasien['kdAsalPasien'] then
+        begin
+          with DataSimrs.qryVw_AsalPasien do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from Vw_AsalPasien where asalPasien="' + cbbAsalPasienUgd.Text + '"';
+            Open;
+          end;
+          asalPx := DataSimrs.qryVw_AsalPasien['kdAsalPasien']
+        end
+        else
+          asalPx := cbbAsalPasienUgd.EditValue;
+
+
+           ///isi cara bayar
+        with DataSimrs.qryCaraBayar do
+        begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_carabayar where kdCaraBayar="'+cbbCaraBayarUgd.EditValue+'"';
+            Open;
+        end;
+        if cbbCaraBayarUgd.EditValue = DataSimrs.qryCaraBayar['kdCaraBayar'] then
+        begin
+          crBy := cbbCaraBayarUgd.EditValue;
+        end
+        else
+        begin
+          with DataSimrs.qryCaraBayar do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_carabayar where carabayar="'+cbbCaraBayarUgd.Text+'"';
+            Open;
+          end;
+          crBy := DataSimrs.qryCaraBayar['kdCaraBayar'];
+        end;
+
+            ///isi penjamin
+         with DataSimrs.qryPenjamin do
+         begin
+          Close;
+          SQL.Clear;
+          SQL.Text := 'select * from t_penjamin where kdPenjamin="' + cbbPenjaminUgd.EditValue + '"';
+          Open;
+         end;
+        if cbbPenjaminUgd.EditValue = DataSimrs.qryPenjamin['kdPenjamin'] then
+        begin
+          pjm := cbbPenjaminUgd.EditValue;
+
+        end
+        else
+        begin
+          with DataSimrs.qryPenjamin do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Text := 'select * from t_penjamin where penjamin="' + cbbPenjaminUgd.Text + '"';
+            Open;
+          end;
+          pjm := DataSimrs.qryPenjamin['kdPenjamin'];
+        end;
+
+
        // insert ke tabel registrasi
         with DataSimrs.qryt_registrasi do
         begin
@@ -892,7 +1123,7 @@ if (cbbAsalPasienUgd.Text = '') or (cbbCaraBayarUgd.Text='') or (cbbPenjaminUgd.
                       'kdCaraBayar,kdPenjamin,kdTenagaMedis,waktuPraktekDokter,kdInstalasi,'+
                       'kdStatusKeluar,pasienlamabaru,kdCaraKeluar,createDate,username,pengguna)'+
                       'values ("'+edtNoRegistrasiUgd.Text+'","'+tgldaftarIgd+'","'+edtNoRekamedisUgd.Text+'",'+
-                      '"'+cbbAsalPasienUgd.EditValue+'","'+cbbCaraBayarUgd.EditValue+'","'+cbbPenjaminUgd.EditValue+'",'+
+                      '"'+asalPx+'","'+crBy+'","'+pjm+'",'+
                       '"'+cbbDokterUgd.EditValue+'","'+cbbJadwalDokterUgd.Text+'","ki4","18","'+edtLamaBaruUgd.Text+'","8",'+
                       '"'+FormatDateTime('yyyy-mm-dd hh:mm:ss',Now)+'","'+FPendaftaran.statSimrs.Panels[0].Text+'","'+FPendaftaran.statSimrs.Panels[3].Text+'")';
           ExecSQL;
@@ -924,38 +1155,49 @@ end;
 procedure TFPendaftaranPasienRawatInap.actTambahIgdExecute(
   Sender: TObject);
 begin
+  ///  pemanggilan procedure tambah UGD
   tambahUgd;
   edtNoRekamedisUgd.SetFocus;
+  /// pemanggilan procedure noRegistrasi
   noRegistrasiUgd;
+  tampilAsalPasien; tampilCaraBayar; tampilPenjamin;
 end;
 
 procedure TFPendaftaranPasienRawatInap.actKartuBerobatIgdExecute(
   Sender: TObject);
 begin
+  /// procedure print kartu obat
    printKartuBerobat;
 end;
 
 procedure TFPendaftaranPasienRawatInap.actGelangIgdExecute(
   Sender: TObject);
 begin
-  printGelang;
+  /// procedure print gelang
+if (edtJkUgd.Text='L') then
+    printGelang
+else
+    MessageDlg('Pasien Jenis Kelamin Perempuan',mtInformation,[mbOK],0)
 end;
 
 procedure TFPendaftaranPasienRawatInap.actLabel2x1IgdExecute(
   Sender: TObject);
 begin
+  /// procedure print label 2x1
    printLabel2x1;
 end;
 
 procedure TFPendaftaranPasienRawatInap.actKarcisIgdExecute(
   Sender: TObject);
 begin
+  /// procedure print label karcis
     printKarcisPasien;
 end;
 
 procedure TFPendaftaranPasienRawatInap.dxnvbrtmRiwayatKunjuganUgdClick(
   Sender: TObject);
 begin
+
  if edtNoRekamedisUgd.Text = '' then
     MessageDlg('No RM Pasien Masih Kosong, Silahkan Pilih Menu Pasien Lama....!',mtWarning,[mbok],0)
   else
@@ -968,6 +1210,7 @@ end;
 procedure TFPendaftaranPasienRawatInap.dxnvbrtmKorenksiBiodataUgdClick(
   Sender: TObject);
 begin
+  /// tampil ketika tombol biodata pasien
 with FDaftarDataBiodataPasien do
 begin
 btnDaftar.Visible := True;
@@ -981,6 +1224,7 @@ end;
 procedure TFPendaftaranPasienRawatInap.dxnvbrtmKoreksiKeluargaUgdClick(
   Sender: TObject);
 begin
+  /// tampil ketika tombol koreksi keluarga
 with FDaftarDataBiodataPasien do
 begin
 btnDaftar.Visible := False;
@@ -994,6 +1238,7 @@ end;
 procedure TFPendaftaranPasienRawatInap.dxnvbrtmBatalPasienUgdClick(
   Sender: TObject);
 begin
+   /// tampil ketika tombol batal pasien IGD
 with FDataDaftarPasienIgd Do
 begin
 btnBatalPasien.Visible := True;
@@ -1007,6 +1252,7 @@ end;
 procedure TFPendaftaranPasienRawatInap.dxnvbrtmDaftarHariIniUgdClick(
   Sender: TObject);
 begin
+  /// tampil ketika tombol daftar pasien hari ini
 with FDataDaftarPasienIgd Do
 begin
 btnBatalPasien.Visible := False;
@@ -1020,6 +1266,7 @@ end;
 procedure TFPendaftaranPasienRawatInap.dxnvbrtmUgdPrintLabelClick(
   Sender: TObject);
 begin
+
 WITH FDaftarDataBiodataPasien do
 begin
 btnDaftar.Visible := False;
@@ -1060,6 +1307,7 @@ begin
 if Key=#13 then
   begin
     key := #0;
+    /// pengujian cara bayar jika kosong
     if cbbCaraBayarUgd.Text = '' then
        ShowMessage('Data Tidak Boleh Kosong...!')
     else
@@ -1158,6 +1406,7 @@ end;
 
 procedure TFPendaftaranPasienRawatInap.btnPasienLamaClick(Sender: TObject);
 begin
+  /// tampil proses on page rawat inap
   FDataPendaftaranPasien.btnDaftar.Caption := 'DAFTAR RAWAT INAP';
   edtLamaBaru.Text := 'lama';
   FDataPendaftaranPasien.Show;
@@ -1167,19 +1416,6 @@ procedure TFPendaftaranPasienRawatInap.dxnvbrtmMenuItemKeluarClick(
   Sender: TObject);
 begin
   Close;
-end;
-
-procedure TFPendaftaranPasienRawatInap.dxnvbrtmMenuItemEditClick(
-  Sender: TObject);
-begin
-with FDaftarDataBiodataPasien do
-begin
-btnDaftar.Visible := True;
-btnPrintLabel.Visible := True;
-btnEditPenjamin.Visible := False;
-btnKOREKSIPENANGGUNGJAWAB.Visible := False;
-Show;
-end;
 end;
 
 procedure TFPendaftaranPasienRawatInap.dxnvbrtmMenuItemRiwayatKunjunganClick(
@@ -1245,20 +1481,21 @@ begin
     if DataSimrs.qryVwPasien.RecordCount >= 1 then
     begin
       noRmRanap := DataSimrs.qryVwPasien.FieldByname('noRekamedis').AsString;
+      edtNoRekamedis.Text := noRmRanap;
       //// tambah pengujian status pengujian pasien blm bisa
       
       with DataSimrs.qryvw_pasienrawatinap do
       begin
         Close;
         SQL.Clear;
-        SQL.Text := 'select noRekamedis,statusKeluar,rawatInap,tglDaftar from vw_pasienrawatinaphariini where noRekamedis="'+noRmRanap+'" and statusKeluar="Di Rawat Inap" limit 50';
+        SQL.Text := 'select noRekamedis,statusKeluar,rawatInap,tglDaftar from vw_pasienrawatinap where noRekamedis="'+edtNoRekamedis.Text+'" and statusKeluar="Di Rawat Inap"';
         Open;
       end;
-        if (DataSimrs.qryvw_pasienrawatinap.FieldByName('noRekamedis').AsString = noRmRanap) or
+      if (edtNoRekamedis.Text = DataSimrs.qryvw_pasienrawatinap.FieldByName('noRekamedis').AsString) or
             (DataSimrs.qryvw_pasienrawatinap.FieldByName('statusKeluar').AsString = 'Di Rawat Inap') then
             ShowMessage('Pasien Masih Terdaftar Di Ruang/TGL "'+DataSimrs.qryvw_pasienrawatinap['rawatInap']+'"/"'+DataSimrs.qryvw_pasienrawatinap.Fieldbyname('tglDaftar').AsString+'"')
-        else
-        begin
+      else
+      begin
         noRegistrasiRanap;
         FDataPendaftaranPasien.isiPasienRanap;
         with DataSimrs.qryVwPasien do
@@ -1270,6 +1507,8 @@ begin
         end;
       end
     end
+    else
+    MessageDlg('Data Tidak Di Temukan...!',mtWarning,[mbOK],0);
 end;
 end;
 
@@ -1455,6 +1694,14 @@ if (cbbAsalPasien.Text = '') or (cbbCaraBayar.Text='') or (cbbPenjamin.Text='') 
 
    else
    begin
+     with DataSimrs.qryt_registrasi do
+     begin
+       Close;
+       SQL.Clear;
+       SQL.Text := 'select noDaftar from t_registrasi where noDaftar="'+edtNoRegistrasi.Text+'" ';
+       Open;
+     end;
+
      /// pengujian noDaftar sudah terdaftar
      if DataSimrs.qryt_registrasi.Locate('noDaftar',edtNoRegistrasi.Text,[])  then
         MessageDlg('Data Sudah Ada, Klik Tombol Tambah Untuk Pasien Baru!!',mtWarning,[mbok],0)
@@ -1565,6 +1812,7 @@ begin
   noRegistrasiRanap;
   edtNoRekamedis.SetFocus;
   tambahRanap;
+  tampilAsalPasien; tampilCaraBayar; tampilPenjamin;
 end;
 
 procedure TFPendaftaranPasienRawatInap.actKartuBerobatExecute(
@@ -1610,18 +1858,18 @@ end;
 
 procedure TFPendaftaranPasienRawatInap.pnlKeluarClick(Sender: TObject);
 begin
-  Application.Terminate;
+ Close
 end;
 
 procedure TFPendaftaranPasienRawatInap.pnlkeluar1Click(Sender: TObject);
 begin
-  Application.Terminate;
+  Close;
 end;
 
 procedure TFPendaftaranPasienRawatInap.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  Application.Terminate;
+  FPendaftaranPasienRawatInap.WindowState := wsMinimized;
 end;
 
 procedure TFPendaftaranPasienRawatInap.btnKelasClick(Sender: TObject);
@@ -1636,18 +1884,127 @@ end;
 procedure TFPendaftaranPasienRawatInap.dxnvbrtmMenuItemLaporanClick(
   Sender: TObject);
 begin
-  WinExec('laporan\PLaporan.exe',SW_SHOWNORMAL);
+ WinExec('\\simrs_02\New folder\kelengkapan Pengembangan\_NEW SIMRS 2019\APPS\APLIKASI LAPORAN\LaporanPendaftaran.exe', SW_SHOWNORMAL);
 end;
 
 procedure TFPendaftaranPasienRawatInap.dxnvbrtmLaporanUgdClick(
   Sender: TObject);
 begin
-  WinExec('laporan\PLaporan.exe',SW_SHOWNORMAL)
+ WinExec('\\simrs_02\New folder\kelengkapan Pengembangan\_NEW SIMRS 2019\APPS\APLIKASI LAPORAN\LaporanPendaftaran.exe', SW_SHOWNORMAL);
 end;
 
 procedure TFPendaftaranPasienRawatInap.label2x1IGD1Click(Sender: TObject);
 begin
   frxrprtLabel.DesignReport;
+end;
+
+procedure TFPendaftaranPasienRawatInap.btnRujukanManualClick(
+  Sender: TObject);
+{var
+  RJK : TFRujukanManual;}
+begin
+  {RJK := TFRujukanManual.Create(nil);
+  RJK.Parent := pnlIsiRujukan;
+  RJK.Align := alClient;
+  RJK.Show;}
+  FRujukanManual.Show;
+end;
+
+procedure TFPendaftaranPasienRawatInap.dxnvbrtmUpdateStatusPulangClick(
+  Sender: TObject);
+begin
+  FUpdatePulangSep.Show;
+end;
+
+procedure TFPendaftaranPasienRawatInap.btnRujukanClick(Sender: TObject);
+var
+  RJ1 : TFRujukanSep;
+begin
+  RJ1 := TFRujukanSep.Create(nil);
+  RJ1.Parent := pnlIsiRujukan;
+  RJ1.Align := alClient;
+  RJ1.Show;
+end;
+
+procedure TFPendaftaranPasienRawatInap.dxnvbrtmMenuItemEditClick(
+  Sender: TObject);
+begin
+with FDaftarDataBiodataPasien do
+begin
+btnDaftar.Visible := True;
+btnPrintLabel.Visible := True;
+btnEditPenjamin.Visible := False;
+btnKOREKSIPENANGGUNGJAWAB.Visible := False;
+Show;
+end;
+end;
+
+procedure TFPendaftaranPasienRawatInap.dxnvbrtmMenuItemEditPenjaminClick(
+  Sender: TObject);
+begin
+with FDaftarDataBiodataPasien do
+begin
+btnDaftar.Visible := False;
+btnPrintLabel.Visible := False;
+btnEditPenjamin.Visible := True;
+btnKOREKSIPENANGGUNGJAWAB.Visible := False;
+Show;
+end;
+end;
+
+procedure TFPendaftaranPasienRawatInap.btnGelangPClick(Sender: TObject);
+begin
+if edtJkUgd.Text = 'P' then
+  PrinterGelangP
+  else
+  MessageDlg('Pasien Jenis Kelamin Laki-Laki',mtInformation,[mbOK],0)
+end;
+
+procedure TFPendaftaranPasienRawatInap.btnRujukanManualRanapClick(
+  Sender: TObject);
+var
+  RJK : TFRujukanManual;
+begin
+  RJK := TFRujukanManual.Create(nil);
+  RJK.Parent := pnlPanelIsiRujukanRanap;
+  RJK.Align := alClient;
+  RJK.Show;
+end;
+
+procedure TFPendaftaranPasienRawatInap.btnRujukanRanapClick(
+  Sender: TObject);
+var
+  RJK : TFRujukanSep;
+begin
+  RJK := TFRujukanSep.Create(nil);
+  RJK.Parent := pnlPanelIsiRujukanRanap;
+  RJK.Align := alClient;
+  RJK.Show;
+end;
+
+procedure TFPendaftaranPasienRawatInap.btnVklaimClick(Sender: TObject);
+VAR
+  RJK : TFRujukanManual;
+begin
+  RJK := TFRujukanManual.Create(nil);
+  RJK.Parent := pnlIsiRujukan;
+  RJK.Align := alClient;
+  RJK.edtNOMERRUJUKANMANUAL.Text := edtNoKartuUgd.Text;
+  RJK.edtNORMMANUAL.Text := edtNoRekamedisUgd.Text;
+  RJK.Show;
+end;
+
+procedure TFPendaftaranPasienRawatInap.dxnvbrtmUgdEDITPENJAMINClick(
+  Sender: TObject);
+begin
+with FDaftarDataBiodataPasien do
+begin
+btnDaftar.Visible := False;
+btnPrintLabel.Visible := False;
+btnEditPenjamin.Visible := True;
+btnKOREKSIPENANGGUNGJAWAB.Visible := False;
+Show;
+end;
 end;
 
 end.

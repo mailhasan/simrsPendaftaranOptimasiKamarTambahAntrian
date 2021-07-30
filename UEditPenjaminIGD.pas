@@ -43,6 +43,7 @@ type
     procedure edtNoSepKeyPress(Sender: TObject; var Key: Char);
     procedure edtAtasNamaKeyPress(Sender: TObject; var Key: Char);
     procedure pnlKeluarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -127,6 +128,25 @@ end;
 procedure TFEditPenjaminIGD.pnlKeluarClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFEditPenjaminIGD.FormShow(Sender: TObject);
+begin
+  with DataSimrs.qryCaraBayar do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'select * from t_carabayar';
+    Open;
+  end;
+
+  with DataSimrs.qryPenjamin do
+  begin
+   Close;
+    SQL.Clear;
+    SQL.Text := 'select * from t_penjamin';
+    Open;
+  end;
 end;
 
 end.

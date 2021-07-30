@@ -197,6 +197,20 @@ object FDaftarPasienHariIniRajal: TFDaftarPasienHariIniRajal
       TabOrder = 4
       OnClick = btnBatalPasienClick
     end
+    object btnPrintSep: TcxButton
+      Left = 792
+      Top = 16
+      Width = 97
+      Height = 25
+      Caption = 'PRINT SEP'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 5
+    end
   end
   object pnlAtas: TPanel
     Left = 0

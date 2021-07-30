@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DBGridEhGrouping, StdCtrls, GridsEh, DBGridEh, ExtCtrls;
+  Dialogs, DBGridEhGrouping, StdCtrls, GridsEh, DBGridEh, ExtCtrls,
+  ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, EhLibVCL, DBAxisGridsEh;
 
 type
   TFDataPendaftaranPasien = class(TForm)
@@ -19,6 +20,8 @@ type
     btnDaftar: TButton;
     pnlAtas: TPanel;
     pnlKeluar: TPanel;
+    grpKategori: TGroupBox;
+    cbbKategori: TComboBox;
     procedure edtNoRmNamaChange(Sender: TObject);
     procedure edtNoRmNamaKeyPress(Sender: TObject; var Key: Char);
     procedure edtAlamatChange(Sender: TObject);
@@ -29,8 +32,11 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
     procedure pnlKeluarClick(Sender: TObject);
+    { Private declarations }
+
   private
     { Private declarations }
+
   public
     { Public declarations }
     procedure tampilpasien;
@@ -49,8 +55,7 @@ implementation
 
 {$R *.dfm}
 uses
-  UDataSimrs, DateUtils, UPendaftaran, UPendaftaranPasienIgdRanap;
-
+  UDataSimrs, DateUtils, UPendaftaran, UPendaftaranPasienIgdRanap,math;
 
 /// procedure setting umur otomatis
 procedure umur(ThnLama, ThnBaru: TDate);
@@ -293,6 +298,7 @@ begin
     begin
 
       noRmIgd := DataSimrs.qryVwPasien.Fieldbyname('noRekamedis').AsString;
+      /// pengujian di rawat jalan
       with DataSimrs.qryvw_pasienrawatjalan do
       begin
         Close;
@@ -300,9 +306,22 @@ begin
         SQL.Text := 'select noRekamedis,statusKeluar,unit  from vw_pasienrawatjalan where (noRekamedis="' + noRmIgd + '") and (statusKeluar="Di Rawat Igd")';
         Open;
       end;
+      /// pengujian rawat inap
+      with DataSimrs.qryvw_pasienrawatinap do
+      begin
+        Close;
+        SQL.Clear;
+        SQL.Text := 'select noRekamedis,statusKeluar,rawatInap,tglDaftar from vw_pasienrawatinap where noRekamedis="' + noRmIgd + '" and statusKeluar="Di Rawat Inap"';
+        Open;
+      end;
 
       if (DataSimrs.qryvw_pasienrawatjalan.FieldByName('noRekamedis').AsString = noRmIgd) and (DataSimrs.qryvw_pasienrawatjalan.FieldByName('statusKeluar').AsString = 'Di Rawat Igd') then
         ShowMessage('Pasien Masih Terdaftar Di "' + DataSimrs.qryvw_pasienrawatjalan['unit'] + '"')
+        
+      /// pengujian masih terdaftar di Rawat inap
+      else if (DataSimrs.qryvw_pasienrawatinap.FieldByName('noRekamedis').AsString = noRmIgd) or
+            (DataSimrs.qryvw_pasienrawatinap.FieldByName('statusKeluar').AsString = 'Di Rawat Inap') then
+            ShowMessage('Pasien Masih Terdaftar Di Ruang/TGL "'+DataSimrs.qryvw_pasienrawatinap['rawatInap']+'"/"'+DataSimrs.qryvw_pasienrawatinap.Fieldbyname('tglDaftar').AsString+'"')
       else
       begin
         isiPasienIgd;
@@ -327,7 +346,7 @@ begin
         Open;
       end;
       if (DataSimrs.qryvw_pasienrawatinap.FieldByName('noRekamedis').AsString = noRmRanap) or (DataSimrs.qryvw_pasienrawatinap.FieldByName('statusKeluar').AsString = 'Di Rawat Inap') then
-        ShowMessage('Pasien Masih Terdaftar Di Ruang/TGL "' + DataSimrs.qryvw_pasienrawatinap['rawatInap'] + '","' + DataSimrs.qryvw_pasienrawatinap['rawatInap'] + '"')
+        ShowMessage('Pasien Masih Terdaftar Di Ruang/TGL "' + DataSimrs.qryvw_pasienrawatinap['rawatInap'] + '","' + DataSimrs.qryvw_pasienrawatinap['tglDaftar'] + '"')
       else
       begin
         isiPasienRanap;
@@ -355,13 +374,28 @@ begin
   end
   else
   begin
+    IF cbbKategori.Text = 'NAMA AWAL' then
+    begin
     with DataSimrs.qryVwPasien do
     begin
       Close;
       SQL.Clear;
-      SQL.Text := 'select * from t_pasien where nmPasien LIKE "%' + edtNoRmNama.Text + '%" LIMIT 20';
+      SQL.Text := 'select * from t_pasien where nmPasien LIKE "%' + edtNoRmNama.Text + '" limit 250';
       Open;
     end;
+    end
+    else
+    begin
+    with DataSimrs.qryVwPasien do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Text := 'select * from t_pasien where nmPasien LIKE "' + edtNoRmNama.Text + '%" limit 250';
+      Open;
+    end;
+    end;
+
+    //paging(tothal);
   end;
 end;
 
@@ -395,7 +429,7 @@ begin
       {SQL.Text := 'select * from vw_datapasien where (nmPasien LIKE "'+edtNoRmNama.Text+'%") and  '+
                   '(alamat like "%'+edtAlamat.Text+'%") OR (kelurahan like "%'+edtAlamat.Text+'%") OR (kecamatan like "%'+edtAlamat.Text+'%")'+
                   'OR (kabupaten like "%'+edtAlamat.Text+'%") OR (provinsi like "%'+edtAlamat.Text+'%") limit 20';}
-      SQL.Text := 'select * from t_pasien where (nmPasien LIKE "' + edtNoRmNama.Text + '%" and alamat like "%' + edtAlamat.Text + '%") and  ' + '(nmPasien LIKE "' + edtNoRmNama.Text + '%" or kelurahan like "' + edtAlamat.Text + '%" ' + 'or kecamatan like "' + edtAlamat.Text + '%") limit 20';
+      SQL.Text := 'select * from t_pasien where (nmPasien LIKE "%' + edtNoRmNama.Text + '%" and alamat like "%' + edtAlamat.Text + '%") and  ' + '(nmPasien LIKE "' + edtNoRmNama.Text + '%" or kelurahan like "' + edtAlamat.Text + '%" ' + 'or kecamatan like "' + edtAlamat.Text + '%") limit 250';
 
       Open;
     end;
@@ -433,12 +467,17 @@ begin
 end;
 
 procedure TFDataPendaftaranPasien.FormShow(Sender: TObject);
+var
+  ii: Integer;
+  buttonpaging: TButton;
 begin
   DataSimrs.qryVwPasien.Close;
   edtNoRmNama.Text := '';
   edtNoRmNama.SetFocus;
   edtAlamat.Text := '';
+  cbbKategori.ItemIndex := 0;
   //tampilpasien;
+
 end;
 
 procedure TFDataPendaftaranPasien.pnlKeluarClick(Sender: TObject);

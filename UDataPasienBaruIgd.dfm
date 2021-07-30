@@ -49,9 +49,9 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       object lblNoIdentitas: TLabel
         Left = 16
         Top = 68
-        Width = 158
+        Width = 173
         Height = 19
-        Caption = 'No. Identitas / KTP'
+        Caption = 'No. Identitas / KTP *'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -16
@@ -62,9 +62,9 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       object lblNama: TLabel
         Left = 16
         Top = 98
-        Width = 121
+        Width = 136
         Height = 19
-        Caption = 'Nama Lengkap'
+        Caption = 'Nama Lengkap *'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -16
@@ -75,9 +75,9 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       object lblTempatTglLahir: TLabel
         Left = 16
         Top = 128
-        Width = 194
+        Width = 209
         Height = 19
-        Caption = 'Tempat / Tanggal Lahir'
+        Caption = 'Tempat / Tanggal Lahir *'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -16
@@ -101,9 +101,9 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       object lblJenisKelamin: TLabel
         Left = 16
         Top = 195
-        Width = 112
+        Width = 127
         Height = 19
-        Caption = 'Jenis Kelamin'
+        Caption = 'Jenis Kelamin *'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -16
@@ -126,7 +126,7 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       end
       object lblAlamat: TLabel
         Left = 16
-        Top = 288
+        Top = 320
         Width = 59
         Height = 19
         Caption = 'Alamat'
@@ -152,7 +152,7 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       end
       object lblKelurahanDesa: TLabel
         Left = 16
-        Top = 400
+        Top = 424
         Width = 142
         Height = 19
         Caption = 'Kelurahan / Desa'
@@ -165,7 +165,7 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       end
       object lblKecamatan: TLabel
         Left = 16
-        Top = 432
+        Top = 456
         Width = 91
         Height = 19
         Caption = 'Kecamatan'
@@ -184,7 +184,7 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       end
       object lbl1: TLabel
         Left = 16
-        Top = 464
+        Top = 488
         Width = 145
         Height = 19
         Caption = 'Kabupaten / Kota'
@@ -197,7 +197,7 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       end
       object lblProvinsi: TLabel
         Left = 16
-        Top = 504
+        Top = 528
         Width = 65
         Height = 19
         Caption = 'Provinsi'
@@ -210,7 +210,7 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       end
       object lblKodePos: TLabel
         Left = 16
-        Top = 536
+        Top = 560
         Width = 75
         Height = 19
         Caption = 'Kode Pos'
@@ -274,6 +274,21 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
         Font.Style = [fsBold]
         ParentFont = False
       end
+      object lbl3: TLabel
+        Left = 16
+        Top = 296
+        Width = 115
+        Height = 19
+        Caption = 'Marital Status'
+        Color = clSkyBlue
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
       object edtNmLengkap: TEdit
         Left = 224
         Top = 96
@@ -293,7 +308,7 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       end
       object edtKodePos: TEdit
         Left = 224
-        Top = 528
+        Top = 552
         Width = 153
         Height = 27
         CharCase = ecUpperCase
@@ -408,11 +423,11 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       end
       object cxmAlamat: TcxMemo
         Left = 224
-        Top = 288
+        Top = 320
         Properties.CharCase = ecUpperCase
         TabOrder = 11
         OnKeyPress = cxmAlamatKeyPress
-        Height = 65
+        Height = 57
         Width = 425
       end
       object edtNoIdentitas: TEdit
@@ -425,7 +440,7 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       end
       object cxtxtdtKecamatanNew: TcxTextEdit
         Left = 224
-        Top = 432
+        Top = 456
         Enabled = False
         StyleDisabled.Color = clBtnHighlight
         TabOrder = 13
@@ -433,7 +448,7 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       end
       object cxtxtdtKabKotaNew: TcxTextEdit
         Left = 224
-        Top = 464
+        Top = 488
         Enabled = False
         StyleDisabled.Color = clHighlightText
         TabOrder = 14
@@ -442,7 +457,7 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       end
       object cxtxtdtProvinsiNew: TcxTextEdit
         Left = 224
-        Top = 496
+        Top = 520
         Enabled = False
         Style.BorderColor = clWindowFrame
         StyleDisabled.BorderColor = clBtnShadow
@@ -453,7 +468,7 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       end
       object edtKelurahanDesa: TEdit
         Left = 224
-        Top = 400
+        Top = 424
         Width = 425
         Height = 27
         Enabled = False
@@ -481,7 +496,7 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       end
       object cxlblPencarianKelurahan: TcxLabel
         Left = 16
-        Top = 360
+        Top = 384
         Caption = 'Pencarian Kelurahan'
         ParentFont = False
         Style.Font.Charset = DEFAULT_CHARSET
@@ -493,7 +508,7 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       end
       object edtPencarianKelurahan: TcxTextEdit
         Left = 224
-        Top = 360
+        Top = 384
         ParentFont = False
         Properties.OnChange = edtPencarianKelurahanPropertiesChange
         Style.Font.Charset = DEFAULT_CHARSET
@@ -505,6 +520,20 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
         TabOrder = 20
         OnKeyPress = edtPencarianKelurahanKeyPress
         OnKeyUp = edtPencarianKelurahanKeyUp
+        Width = 425
+      end
+      object cbbMaritalStatus: TcxLookupComboBox
+        Left = 224
+        Top = 288
+        Properties.KeyFieldNames = 'maritalStatus'
+        Properties.ListColumns = <
+          item
+            Caption = 'MARITAL STATUS'
+            FieldName = 'maritalStatus'
+          end>
+        Properties.ListSource = DataSimrs.dst_maritalStatus
+        TabOrder = 21
+        OnKeyPress = cbbMaritalStatusKeyPress
         Width = 425
       end
     end
@@ -522,6 +551,13 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 1
+      object lblDataLengkap: TLabel
+        Left = 8
+        Top = 568
+        Width = 207
+        Height = 19
+        Caption = '* Data Wajib Di Lengkapi'
+      end
       object grpPenjamin: TGroupBox
         Left = 8
         Top = 280
@@ -532,9 +568,9 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
         object lblPenjamin: TLabel
           Left = 8
           Top = 56
-          Width = 77
+          Width = 92
           Height = 19
-          Caption = 'Penjamin'
+          Caption = 'Penjamin *'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -16
@@ -584,9 +620,9 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
         object lblCaraBayar: TLabel
           Left = 8
           Top = 24
-          Width = 90
+          Width = 105
           Height = 19
-          Caption = 'Cara Bayar'
+          Caption = 'Cara Bayar *'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -16
@@ -767,7 +803,7 @@ object FDataPasienBaruIgd: TFDataPasienBaruIgd
     end
     object strngrdAlamat: TStringGrid
       Left = 224
-      Top = 384
+      Top = 416
       Width = 977
       Height = 169
       Font.Charset = DEFAULT_CHARSET

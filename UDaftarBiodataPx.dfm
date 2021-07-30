@@ -117,6 +117,21 @@ object FDaftarDataBiodataPasien: TFDaftarDataBiodataPasien
       TabOrder = 3
       OnClick = btnKOREKSIPENANGGUNGJAWABClick
     end
+    object btnLengkapiFoto: TButton
+      Left = 880
+      Top = 8
+      Width = 185
+      Height = 25
+      Caption = 'LENGKAPI FOTO'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 4
+      OnClick = btnLengkapiFotoClick
+    end
   end
   object pnlAtas: TPanel
     Left = 0

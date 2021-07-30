@@ -2,7 +2,7 @@ object FEditBiodataPasien: TFEditBiodataPasien
   Left = 532
   Top = 76
   Width = 673
-  Height = 675
+  Height = 760
   Caption = 'EDIT BIODATA PASIEN'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,7 +17,7 @@ object FEditBiodataPasien: TFEditBiodataPasien
     Left = 0
     Top = 49
     Width = 657
-    Height = 532
+    Height = 629
     Align = alClient
     Color = clSkyBlue
     Font.Charset = DEFAULT_CHARSET
@@ -133,7 +133,7 @@ object FEditBiodataPasien: TFEditBiodataPasien
     end
     object lblAlamat: TLabel
       Left = 16
-      Top = 288
+      Top = 320
       Width = 59
       Height = 19
       Caption = 'Alamat'
@@ -146,7 +146,7 @@ object FEditBiodataPasien: TFEditBiodataPasien
     end
     object lblProvinsi: TLabel
       Left = 16
-      Top = 457
+      Top = 473
       Width = 65
       Height = 19
       Caption = 'Provinsi'
@@ -159,7 +159,7 @@ object FEditBiodataPasien: TFEditBiodataPasien
     end
     object lbl1: TLabel
       Left = 16
-      Top = 424
+      Top = 440
       Width = 145
       Height = 19
       Caption = 'Kabupaten / Kota'
@@ -172,7 +172,7 @@ object FEditBiodataPasien: TFEditBiodataPasien
     end
     object lblKecamatan: TLabel
       Left = 16
-      Top = 392
+      Top = 408
       Width = 91
       Height = 19
       Caption = 'Kecamatan'
@@ -185,7 +185,7 @@ object FEditBiodataPasien: TFEditBiodataPasien
     end
     object lblKelurahanDesa: TLabel
       Left = 16
-      Top = 360
+      Top = 376
       Width = 142
       Height = 19
       Caption = 'Kelurahan / Desa'
@@ -211,7 +211,7 @@ object FEditBiodataPasien: TFEditBiodataPasien
     end
     object lblKodePos: TLabel
       Left = 16
-      Top = 488
+      Top = 504
       Width = 75
       Height = 19
       Caption = 'Kode Pos'
@@ -242,6 +242,19 @@ object FEditBiodataPasien: TFEditBiodataPasien
       Height = 19
       Caption = 'No. Telepon'
       Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lbl3: TLabel
+      Left = 16
+      Top = 280
+      Width = 115
+      Height = 19
+      Caption = 'Marital Status'
+      Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
       Font.Name = 'Tahoma'
@@ -390,9 +403,9 @@ object FEditBiodataPasien: TFEditBiodataPasien
     end
     object mmoAlamat: TMemo
       Left = 200
-      Top = 280
+      Top = 320
       Width = 433
-      Height = 65
+      Height = 41
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -423,7 +436,7 @@ object FEditBiodataPasien: TFEditBiodataPasien
     end
     object edtKodePos: TEdit
       Left = 200
-      Top = 486
+      Top = 502
       Width = 169
       Height = 28
       CharCase = ecUpperCase
@@ -471,7 +484,7 @@ object FEditBiodataPasien: TFEditBiodataPasien
     end
     object edtKeluarahan: TEdit
       Left = 200
-      Top = 352
+      Top = 368
       Width = 425
       Height = 28
       CharCase = ecUpperCase
@@ -488,7 +501,7 @@ object FEditBiodataPasien: TFEditBiodataPasien
     end
     object edtKecamatan: TEdit
       Left = 200
-      Top = 384
+      Top = 400
       Width = 425
       Height = 28
       CharCase = ecUpperCase
@@ -505,7 +518,7 @@ object FEditBiodataPasien: TFEditBiodataPasien
     end
     object edtKabKota: TEdit
       Left = 200
-      Top = 416
+      Top = 432
       Width = 425
       Height = 28
       CharCase = ecUpperCase
@@ -522,7 +535,7 @@ object FEditBiodataPasien: TFEditBiodataPasien
     end
     object edtProvinsi: TEdit
       Left = 200
-      Top = 448
+      Top = 464
       Width = 425
       Height = 28
       CharCase = ecUpperCase
@@ -537,8 +550,8 @@ object FEditBiodataPasien: TFEditBiodataPasien
       OnKeyUp = edtProvinsiKeyUp
     end
     object strngrdDesa: TStringGrid
-      Left = 200
-      Top = 376
+      Left = 208
+      Top = 400
       Width = 441
       Height = 120
       Font.Charset = DEFAULT_CHARSET
@@ -552,6 +565,13 @@ object FEditBiodataPasien: TFEditBiodataPasien
       Visible = False
       OnDblClick = strngrdDesaDblClick
       OnKeyPress = strngrdDesaKeyPress
+      OnSelectCell = strngrdDesaSelectCell
+      ColWidths = (
+        64
+        64
+        64
+        64
+        64)
       RowHeights = (
         24
         24
@@ -560,8 +580,8 @@ object FEditBiodataPasien: TFEditBiodataPasien
         24)
     end
     object strngrdKecamatan: TStringGrid
-      Left = 200
-      Top = 408
+      Left = 208
+      Top = 432
       Width = 441
       Height = 120
       Font.Charset = DEFAULT_CHARSET
@@ -575,6 +595,7 @@ object FEditBiodataPasien: TFEditBiodataPasien
       Visible = False
       OnDblClick = strngrdKecamatanDblClick
       OnKeyPress = strngrdKecamatanKeyPress
+      OnSelectCell = strngrdKecamatanSelectCell
       ColWidths = (
         64
         64
@@ -589,8 +610,8 @@ object FEditBiodataPasien: TFEditBiodataPasien
         24)
     end
     object strngrdKabKota: TStringGrid
-      Left = 200
-      Top = 432
+      Left = 208
+      Top = 456
       Width = 441
       Height = 120
       Font.Charset = DEFAULT_CHARSET
@@ -604,6 +625,7 @@ object FEditBiodataPasien: TFEditBiodataPasien
       Visible = False
       OnDblClick = strngrdKabKotaDblClick
       OnKeyPress = strngrdKabKotaKeyPress
+      OnSelectCell = strngrdKabKotaSelectCell
       ColWidths = (
         64
         64
@@ -618,8 +640,8 @@ object FEditBiodataPasien: TFEditBiodataPasien
         24)
     end
     object strngrdProvinsi: TStringGrid
-      Left = 200
-      Top = 460
+      Left = 208
+      Top = 484
       Width = 441
       Height = 120
       Font.Charset = DEFAULT_CHARSET
@@ -633,6 +655,7 @@ object FEditBiodataPasien: TFEditBiodataPasien
       Visible = False
       OnDblClick = strngrdProvinsiDblClick
       OnKeyPress = strngrdProvinsiKeyPress
+      OnSelectCell = strngrdProvinsiSelectCell
       RowHeights = (
         24
         24
@@ -640,12 +663,25 @@ object FEditBiodataPasien: TFEditBiodataPasien
         24
         24)
     end
+    object cbbMaritalStatus: TcxLookupComboBox
+      Left = 200
+      Top = 280
+      Properties.KeyFieldNames = 'maritalStatus'
+      Properties.ListColumns = <
+        item
+          Caption = 'MARITAL STATUS'
+          FieldName = 'maritalStatus'
+        end>
+      Properties.ListSource = DataSimrs.dst_maritalStatus
+      TabOrder = 22
+      Width = 441
+    end
   end
   object pnlBawah: TPanel
     Left = 0
-    Top = 581
+    Top = 678
     Width = 657
-    Height = 55
+    Height = 43
     Align = alBottom
     Color = 15115304
     Font.Charset = DEFAULT_CHARSET

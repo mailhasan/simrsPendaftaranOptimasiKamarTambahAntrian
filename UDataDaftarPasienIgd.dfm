@@ -220,6 +220,21 @@ object FDataDaftarPasienIgd: TFDataDaftarPasienIgd
       TabOrder = 5
       OnClick = btnPrinKarcisClick
     end
+    object btnPINERE: TcxButton
+      Left = 688
+      Top = 16
+      Width = 145
+      Height = 31
+      Caption = 'RUANG PINERE'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 6
+      OnClick = btnPINEREClick
+    end
   end
   object pnlAtas: TPanel
     Left = 0

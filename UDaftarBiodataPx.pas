@@ -21,6 +21,7 @@ type
     strngrdDataPasien: TStringGrid;
     btnEditPenjamin: TButton;
     btnKOREKSIPENANGGUNGJAWAB: TButton;
+    btnLengkapiFoto: TButton;
     procedure btnDaftarClick(Sender: TObject);
     procedure btnPrintLabelClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -29,6 +30,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure btnEditPenjaminClick(Sender: TObject);
     procedure btnKOREKSIPENANGGUNGJAWABClick(Sender: TObject);
+    procedure btnLengkapiFotoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,7 +48,7 @@ implementation
 {$R *.dfm}
 
 uses UDataSimrs,UPendaftaran,UEditBiodataPasien,DateUtils, ADODB, DB,
-    UEditPenjaminDataPasien, UKoreksiKeluargaPasien;
+    UEditPenjaminDataPasien, UKoreksiKeluargaPasien,UFotoBerkas;
 
 procedure umur(ThnLama, ThnBaru:TDate);
 begin
@@ -162,6 +164,7 @@ if DataSimrs.qryVwPasien.RecordCount >= 1 then
         edtTahun.Text :=IntToStr(iThn)+' Tahun, '+IntToStr(iBln)+' Bulan, '+IntToStr(iHari)+' Hari';
         cbbJenisKelamin.Text :=  FieldByname('jenisKelamin').AsString;
         cbbAgama.Text := FieldByname('agama').AsString;
+        cbbMaritalStatus.Text := FieldByname('maritalStatus').AsString;
         mmoAlamat.Text := FieldByname('alamat').AsString;
         edtProvinsi.Text := FieldByname('provinsi').AsString;
         cbbPendidikan.Text := FieldByname('pendidikan').AsString;
@@ -202,8 +205,19 @@ if DataSimrs.qryVwPasien.RecordCount >= 1 then
       SQL.Clear;
       SQL.Text := 'select * from t_pasien where noRekamedis="'+noRmBiodata+'"';
       Open;
-    end; 
-    FPendaftaran.frxrprtLabel.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\label2x1IGD.fr3');
+    end;
+
+    with DataSimrs.qryt_settinglinkapplainpendaftaran do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Text := 'select * from t_settinglinkapplainpendaftaran where idsettinglinkapplainpendaftaran=1';
+      Open;
+    end;
+
+
+    ///FPendaftaran.frxrprtLabel.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\label2x1IGD.fr3');
+    FPendaftaran.frxrprtLabel.LoadFromFile(Trim(DataSimrs.qryt_settinglinkapplainpendaftaran['label2x1'])+'\label2x1IGD.fr3');
     FPendaftaran.frxrprtLabel.ShowReport();
   end
   else
@@ -313,6 +327,29 @@ if DataSimrs.qryVwPasien.RecordCount >= 1 then
   end
   else
     MessageDlg('Data Pasien Tidak Di Temukan...!',mtInformation,[mbok],0);
+end;
+
+procedure TFDaftarDataBiodataPasien.btnLengkapiFotoClick(Sender: TObject);
+begin
+with DataSimrs.qryVwPasien do
+begin
+  Close;
+  SQL.Clear;
+  SQL.Text := 'select * from t_pasien where noRekamedis="'+strngrdDataPasien.Cells[1,strngrdDataPasien.selection.top]+'"';
+  Open;
+end;
+
+if DataSimrs.qryVwPasien.RecordCount >= 1 then
+  begin
+    with FFotoBerkas do
+    begin
+      cxlblNoRekamedis.Caption :=  DataSimrs.qryVwPasien['noRekamedis'];
+      cxlblNamaPasien.Caption := DataSimrs.qryVwPasien['nmPasien'];
+      Show;
+    end;
+  end
+  else
+  MessageDlg('Data Pasien Tidak Di Temukan...!',mtInformation,[mbok],0);
 end;
 
 end.

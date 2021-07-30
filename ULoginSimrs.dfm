@@ -4,7 +4,7 @@ object FLoginSimrs: TFLoginSimrs
   Width = 497
   Height = 295
   BorderIcons = [biMinimize, biMaximize]
-  Caption = 'p'
+  Caption = 'LOGIN SIMRS'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

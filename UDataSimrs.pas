@@ -3,7 +3,7 @@ unit UDataSimrs;
 interface
 
 uses
-  SysUtils, Classes, DB, ADODB;
+  SysUtils, Classes, DB, ADODB, ZAbstractConnection, ZConnection;
 
 type
   TDataSimrs = class(TDataModule)
@@ -59,6 +59,15 @@ type
     dsJadwalKontrolPasien: TDataSource;
     qryt_antrianpoli: TADOQuery;
     dst_antrianpoli: TDataSource;
+    qryt_fotoberkas: TADOQuery;
+    dst_fotoberkas: TDataSource;
+    qryt_bridingsep: TADOQuery;
+    qrybridging_rujukan_bpjs: TADOQuery;
+    qryPasienRanapLebih3jam: TADOQuery;
+    qryt_settinglinkapplainpendaftaran: TADOQuery;
+    qryt_maritalStatus: TADOQuery;
+    dst_maritalStatus: TDataSource;
+    conSimrs1: TZConnection;
   private
     { Private declarations }
   public

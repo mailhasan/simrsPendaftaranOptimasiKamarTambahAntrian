@@ -50,6 +50,7 @@ type
     btnGantiPenjamin: TButton;
     cxgrdbclmnGrid1DBTableView1Column1: TcxGridDBColumn;
     btnPrinKarcis: TButton;
+    btnPINERE: TcxButton;
     procedure FormShow(Sender: TObject);
     procedure pnlKeluarClick(Sender: TObject);
     procedure btnBatalPasienClick(Sender: TObject);
@@ -59,11 +60,13 @@ type
     procedure btnGantiPenjaminClick(Sender: TObject);
     procedure btnLabel2x1UgdClick(Sender: TObject);
     procedure btnPrinKarcisClick(Sender: TObject);
+    procedure btnPINEREClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
     procedure tampilpasienhariini;
+    procedure TampilsettingLink;
   end;
 
 var
@@ -74,7 +77,8 @@ implementation
 
 {$R *.dfm}
 
-uses UDataSImrs, ADODB, DateUtils,UPendaftaran,UPendaftaranPasienIgdRanap, UEditPenjaminIGD;
+uses UDataSImrs, ADODB, DateUtils,UPendaftaran,UPendaftaranPasienIgdRanap,
+    UEditPenjaminIGD,URuangPinere;
 
 procedure TFDataDaftarPasienIgd.tampilpasienhariini;
 begin
@@ -84,7 +88,7 @@ begin
   begin
     Close;
     SQL.Clear;
-    SQL.Text := 'SELECT * FROM vw_pasienrawatjalan WHERE (unit="IGD") AND (tglDaftar BETWEEN "'+tanggal+'" AND "'+tanggal1+'") ';
+    SQL.Text := 'SELECT * FROM vw_pasienrawatjalan WHERE (unit IN ("IGD","IGD PINERE")) AND (tglDaftar BETWEEN "'+tanggal+'" AND "'+tanggal1+'") ';
     Open;
   end;
 end;
@@ -98,6 +102,17 @@ begin
   Result := StringOfChar(#0, iLen);
   GetComputerName(PChar(Result), iLen);
   SetLength(Result, iLen);
+end;
+
+procedure TFDataDaftarPasienIgd.TampilsettingLink;
+begin
+  with DataSimrs.qryt_settinglinkapplainpendaftaran do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'select * from t_settinglinkapplainpendaftaran where idsettinglinkapplainpendaftaran=1';
+    Open;
+  end;
 end;
 
 procedure TFDataDaftarPasienIgd.FormShow(Sender: TObject);
@@ -191,7 +206,10 @@ if DataSimrs.qryvw_pasienrawatjalan.RecordCount >= 1 then
         Open;
       end;
 
-      FPendaftaran.frxrprtKartuBerobat.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\kartuberobat.fr3');
+      TampilsettingLink;
+
+      ///FPendaftaran.frxrprtKartuBerobat.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\kartuberobat.fr3');
+      FPendaftaran.frxrprtKartuBerobat.LoadFromFile(Trim(DataSimrs.qryt_settinglinkapplainpendaftaran['kartu'])+'\kartuberobat.fr3');
       FPendaftaran.frxrprtKartuBerobat.PrintOptions.Printer:= DataSimrs.qryt_komputer.FieldByname('printerKartu').AsString;
       //frxrprtKartuBerobat.PrintOptions.ShowDialog:=True;
       FPendaftaran.frxrprtKartuBerobat.PrepareReport;
@@ -213,6 +231,7 @@ if DataSimrs.qryvw_pasienrawatjalan.RecordCount >= 1 then
       SQL.Clear;
       SQL.Text := 'select * from t_pasien where noRekamedis="'+noRm+'"';
       Open;
+      
       with DataSimrs.qryt_komputer do
       begin
         Close;
@@ -221,7 +240,10 @@ if DataSimrs.qryvw_pasienrawatjalan.RecordCount >= 1 then
         Open;
       end;
 
-      FPendaftaran.frxrprtGelang.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\gelang.fr3');
+      TampilsettingLink;
+
+      ///FPendaftaran.frxrprtGelang.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\gelang.fr3');
+      FPendaftaran.frxrprtGelang.LoadFromFile(Trim(DataSimrs.qryt_settinglinkapplainpendaftaran['gelang'])+'\gelang.fr3');
       FPendaftaran.frxrprtGelang.PrintOptions.Printer:= DataSimrs.qryt_komputer.FieldByname('printerGelang').AsString;
       //frxrprtKartuBerobat.PrintOptions.ShowDialog:=True;
       FPendaftaran.frxrprtGelang.PrepareReport;
@@ -242,7 +264,18 @@ end;
 end;
 
 procedure TFDataDaftarPasienIgd.btnGantiPenjaminClick(Sender: TObject);
+var
+  idnoDaftar:String;
 begin
+idnoDaftar:= DataSimrs.qryvw_pasienrawatjalan['noDaftar'];
+with DataSimrs.qryvw_pasienrawatjalan do
+begin
+  Close;
+  SQL.Clear;
+  SQL.Text := 'select * from vw_pasienrawatjalan where noDaftar="'+idnoDaftar+'"';
+  Open;
+end;
+
 if DataSimrs.qryvw_pasienrawatjalan.RecordCount >= 1 then
   begin
     with FEditPenjaminIGD do
@@ -278,7 +311,10 @@ if DataSimrs.qryvw_pasienrawatjalan.RecordCount >= 1 then
         Open;
       end;
 
-      FPendaftaran.frxrprtLabel.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\label2x1.fr3');
+      TampilsettingLink;
+
+      ///FPendaftaran.frxrprtLabel.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\label2x1.fr3');
+      FPendaftaran.frxrprtLabel.LoadFromFile(Trim(DataSimrs.qryt_settinglinkapplainpendaftaran['label2x1'])+'\label2x1.fr3');
       FPendaftaran.frxrprtLabel.ShowReport();
     end;
   end
@@ -312,7 +348,10 @@ if DataSimrs.qryvw_pasienrawatjalan.RecordCount >= 1 then
           Open;
         end;
 
-       FPendaftaranPasienRawatInap.frxrprtKarcis.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\karcisIGD.fr3');
+       TampilsettingLink;
+
+       ///FPendaftaranPasienRawatInap.frxrprtKarcis.LoadFromFile(ExtractFilePath(Application.ExeName)+'printPendaftaran\karcisIGD.fr3');
+       FPendaftaranPasienRawatInap.frxrprtKarcis.LoadFromFile(Trim(DataSimrs.qryt_settinglinkapplainpendaftaran['karcis'])+'\karcisIGD.fr3');
        FPendaftaranPasienRawatInap.frxrprtKarcis.PrintOptions.Printer:= DataSimrs.qryt_komputer['printerKarcis'];
        FPendaftaranPasienRawatInap.frxrprtKarcis.PrintOptions.ShowDialog:=True;
        FPendaftaranPasienRawatInap.frxrprtKarcis.PrepareReport;
@@ -320,6 +359,37 @@ if DataSimrs.qryvw_pasienrawatjalan.RecordCount >= 1 then
   end
   else
     MessageDlg('Data Tidak Di Temukan...!',mtInformation,[mbok],0);
+end;
+
+procedure TFDataDaftarPasienIgd.btnPINEREClick(Sender: TObject);
+var
+  noDft1:String;
+begin
+if DataSimrs.qryvw_pasienrawatjalan.RecordCount >= 1 then
+  begin
+  noDft1 := DataSimrs.qryvw_pasienrawatjalan.Fieldbyname('noDaftar').AsString;
+  //// pasien rawat jalan
+  with DataSimrs.qryvw_pasienrawatjalan do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'select * from vw_pasienrawatjalan where noDaftar="'+noDft1+'"';
+    Open;
+  end;
+  /// tampil form di ruang pinere
+  WITH FRuangPinere DO
+  begin
+    edtNODAFTAR.Text := noDft1;
+    edtNODAFTARIGD.Text := DataSimrs.qryvw_pasienrawatjalan.Fieldbyname('noRegistrasiRawatJalan').AsString;
+    edtNORM.Text := DataSimrs.qryvw_pasienrawatjalan.Fieldbyname('noRekamedis').AsString;
+    edtNAMA.Text := DataSimrs.qryvw_pasienrawatjalan.Fieldbyname('nmPasien').AsString;
+    edtTTL.Text :=  DataSimrs.qryvw_pasienrawatjalan.Fieldbyname('tempatLahir').AsString +', '+DataSimrs.qryvw_pasienrawatjalan.Fieldbyname('tglLahir').AsString;
+    mmoALAMAT.Text := DataSimrs.qryvw_pasienrawatjalan.Fieldbyname('alamat').AsString;
+    Show;
+  end;
+  end
+  else
+  MessageDlg('Data Tidak Ada...!',mtWarning,[mbOK],0);
 end;
 
 end.

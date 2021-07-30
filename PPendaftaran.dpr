@@ -25,19 +25,31 @@ uses
   UInformasiKetersedianRawatInap in 'UInformasiKetersedianRawatInap.pas' {FInformasiKetersedianRawatInap},
   ULaporan in 'ULaporan.pas' {FLAPORAN},
   UKelas in 'UKelas.pas' {FKelas},
-  UPrintPdc in 'UPrintPdc.pas' {FPrintPdc},
   UJawalKontrolPasienPerjanjian in 'UJawalKontrolPasienPerjanjian.pas' {FJadwalKontrolPasienPerjanjian},
-  UBpjs in 'UBpjs.pas' {FBpjs};
+  UBpjs in 'UBpjs.pas' {FBpjs},
+  UKonseksiBridingBpjs in 'UKonseksiBridingBpjs.pas' {FKonseksiBridingBpjs},
+  URujukanManualBpjs in 'URujukanManualBpjs.pas' {FRujukanManual},
+  UUpdatePulangSep in 'UUpdatePulangSep.pas' {FUpdatePulangSep},
+  URujukanSep in 'URujukanSep.pas' {FRujukanSep},
+  UFotoBerkas in 'UFotoBerkas.pas' {FFotoBerkas},
+  UPrintRespInsertSep in 'UPrintRespInsertSep.pas' {FPrintRespSep},
+  UResponseManual in 'UResponseManual.pas' {FResponseManual},
+  URujukan in 'URujukan.pas' {FRujukan},
+  UCekVersiAplikasi in 'UCekVersiAplikasi.pas' {FCekVersiUpdate},
+  ULinkAppLainya in 'ULinkAppLainya.pas' {FLinkAppLainya},
+  URuangPinere in 'URuangPinere.pas' {FRuangPinere};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TFLoginSimrs, FLoginSimrs);
-  Application.CreateForm(TFBpjs, FBpjs);
   Application.CreateForm(TFPendaftaran, FPendaftaran);
-  Application.CreateForm(TFLAPORAN, FLAPORAN);
   Application.CreateForm(TFPendaftaranPasienRawatInap, FPendaftaranPasienRawatInap);
+  Application.CreateForm(TFRujukanSep, FRujukanSep);
+  Application.CreateForm(TFRujukanManual, FRujukanManual);
+  Application.CreateForm(TFBpjs, FBpjs);
+  Application.CreateForm(TFLAPORAN, FLAPORAN);
   Application.CreateForm(TDataSimrs, DataSimrs);
   Application.CreateForm(TFDataPendaftaranPasien, FDataPendaftaranPasien);
   Application.CreateForm(TFDataPasienBaru, FDataPasienBaru);
@@ -57,7 +69,15 @@ begin
   Application.CreateForm(TFCariKamarRawatInap, FCariKamarRawatInap);
   Application.CreateForm(TFInformasiKetersedianRawatInap, FInformasiKetersedianRawatInap);
   Application.CreateForm(TFKelas, FKelas);
-  Application.CreateForm(TFPrintPdc, FPrintPdc);
   Application.CreateForm(TFJadwalKontrolPasienPerjanjian, FJadwalKontrolPasienPerjanjian);
+  Application.CreateForm(TFKonseksiBridingBpjs, FKonseksiBridingBpjs);
+  Application.CreateForm(TFUpdatePulangSep, FUpdatePulangSep);
+  Application.CreateForm(TFFotoBerkas, FFotoBerkas);
+  Application.CreateForm(TFPrintRespSep, FPrintRespSep);
+  Application.CreateForm(TFResponseManual, FResponseManual);
+  Application.CreateForm(TFRujukan, FRujukan);
+  Application.CreateForm(TFCekVersiUpdate, FCekVersiUpdate);
+  Application.CreateForm(TFLinkAppLainya, FLinkAppLainya);
+  Application.CreateForm(TFRuangPinere, FRuangPinere);
   Application.Run;
 end.

@@ -1,9 +1,9 @@
 object DataSimrs: TDataSimrs
   OldCreateOrder = False
-  Left = 191
-  Top = 125
-  Height = 880
-  Width = 1381
+  Left = 244
+  Top = 91
+  Height = 932
+  Width = 1266
   object conSimrs: TADOConnection
     Connected = True
     ConnectionString = 'Provider=MSDASQL.1;Persist Security Info=False;Data Source=simrs'
@@ -222,7 +222,9 @@ object DataSimrs: TDataSimrs
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      'select * from vw_pekerjaan')
+      
+        'SELECT * FROM t_pekerjaan ORDER BY LENGTH(kdPekerjaan),kdPekerja' +
+        'an')
     Left = 192
     Top = 176
   end
@@ -369,13 +371,13 @@ object DataSimrs: TDataSimrs
       
         'select COUNT(noDaftar) as Jumlah, unit from vw_pasienrawatjalan ' +
         'GROUP BY  unit')
-    Left = 960
-    Top = 80
+    Left = 560
+    Top = 56
   end
   object dsKunjunganRajalIgd: TDataSource
     DataSet = qryKunjunganRajal
-    Left = 1072
-    Top = 80
+    Left = 656
+    Top = 72
   end
   object qryKelas: TADOQuery
     Active = True
@@ -443,5 +445,96 @@ object DataSimrs: TDataSimrs
     DataSet = qryt_antrianpoli
     Left = 504
     Top = 552
+  end
+  object qryt_fotoberkas: TADOQuery
+    Active = True
+    Connection = conSimrs
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select * from t_fotoberkas')
+    Left = 232
+    Top = 608
+  end
+  object dst_fotoberkas: TDataSource
+    DataSet = qryt_fotoberkas
+    Left = 296
+    Top = 624
+  end
+  object qryt_bridingsep: TADOQuery
+    Active = True
+    Connection = conSimrs
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select * from t_bridingsep')
+    Left = 432
+    Top = 640
+  end
+  object qrybridging_rujukan_bpjs: TADOQuery
+    Connection = conSimrs
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select * from bridging_rujukan_bpjs')
+    Left = 424
+    Top = 712
+  end
+  object qryPasienRanapLebih3jam: TADOQuery
+    Active = True
+    Connection = conSimrs
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT'
+      '  noDaftarRawatInap,'
+      '  tglMasukRawatInap,'
+      '  DATE(tglMasukRawatInap) AS tanggal,'
+      '  TIME(tglMasukRawatInap) AS jam'
+      'FROM'
+      '  t_registrasirawatinap')
+    Left = 432
+    Top = 784
+  end
+  object qryt_settinglinkapplainpendaftaran: TADOQuery
+    Active = True
+    Connection = conSimrs
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select * from t_settinglinkapplainpendaftaran')
+    Left = 608
+    Top = 776
+  end
+  object qryt_maritalStatus: TADOQuery
+    Active = True
+    Connection = conSimrs
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select * from t_maritalStatus')
+    Left = 656
+    Top = 344
+  end
+  object dst_maritalStatus: TDataSource
+    DataSet = qryt_maritalStatus
+    Left = 752
+    Top = 352
+  end
+  object conSimrs1: TZConnection
+    ControlsCodePage = cGET_ACP
+    AutoEncodeStrings = False
+    Connected = True
+    HostName = '192.168.200.2'
+    Port = 3306
+    Database = 'simrs'
+    User = 'root'
+    Password = 'lis1234'
+    Protocol = 'mysql'
+    LibraryLocation = 
+      '\\simrs_02\New folder\kelengkapan Pengembangan\programming\libmy' +
+      'sql\libmysql.dll'
+    Left = 880
+    Top = 56
   end
 end

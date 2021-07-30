@@ -1,7 +1,7 @@
 object FSettingPrinter: TFSettingPrinter
   Left = 461
   Top = 210
-  Width = 476
+  Width = 561
   Height = 310
   Caption = 'SETTING PRINTER'
   Color = clBtnFace
@@ -17,7 +17,7 @@ object FSettingPrinter: TFSettingPrinter
   object pnlTengah: TPanel
     Left = 0
     Top = 49
-    Width = 460
+    Width = 545
     Height = 173
     Align = alClient
     TabOrder = 0
@@ -34,27 +34,27 @@ object FSettingPrinter: TFSettingPrinter
     object cxlblPrinterGelang: TcxLabel
       Left = 8
       Top = 64
-      Caption = 'PRINTER GELANG'
+      Caption = 'PRINTER GELANG LAKI'
     end
     object cxlblPrinterLabel: TcxLabel
       Left = 8
-      Top = 88
+      Top = 112
       Caption = 'PRINTER LABEL'
     end
     object cxlblPinterKarcis: TcxLabel
       Left = 8
-      Top = 112
+      Top = 136
       Caption = 'PRINTER KARCIS'
     end
     object cxtxtdtNamaKomputer: TcxTextEdit
-      Left = 112
+      Left = 184
       Top = 8
       TabOrder = 5
       Text = 'cxtxtdtNamaKomputer'
       Width = 321
     end
     object cbbPrinterKartu: TComboBox
-      Left = 112
+      Left = 184
       Top = 40
       Width = 321
       Height = 21
@@ -63,7 +63,7 @@ object FSettingPrinter: TFSettingPrinter
       Text = 'List Printer'
     end
     object cbbPrinterGelang: TComboBox
-      Left = 112
+      Left = 184
       Top = 64
       Width = 321
       Height = 21
@@ -72,8 +72,8 @@ object FSettingPrinter: TFSettingPrinter
       Text = 'List Printer'
     end
     object cbbPrinterLabel: TComboBox
-      Left = 112
-      Top = 88
+      Left = 184
+      Top = 112
       Width = 321
       Height = 21
       ItemHeight = 13
@@ -81,19 +81,33 @@ object FSettingPrinter: TFSettingPrinter
       Text = 'List Printer'
     end
     object cbbPrinterKarcis: TComboBox
-      Left = 112
-      Top = 112
+      Left = 184
+      Top = 136
       Width = 321
       Height = 21
       ItemHeight = 13
       TabOrder = 9
       Text = 'List Printer'
     end
+    object cxlblPrinterGelangPerempuan: TcxLabel
+      Left = 8
+      Top = 88
+      Caption = 'PRINTER GELANG PEREMPUAN'
+    end
+    object cbbPrinterGelangPerempuan: TComboBox
+      Left = 184
+      Top = 88
+      Width = 321
+      Height = 21
+      ItemHeight = 13
+      TabOrder = 11
+      Text = 'cbbPrinterGelangPerempuan'
+    end
   end
   object pnlBawah: TPanel
     Left = 0
     Top = 222
-    Width = 460
+    Width = 545
     Height = 49
     Align = alBottom
     Color = 15115304
@@ -123,7 +137,7 @@ object FSettingPrinter: TFSettingPrinter
   object pnlAtas: TPanel
     Left = 0
     Top = 0
-    Width = 460
+    Width = 545
     Height = 49
     Align = alTop
     Caption = 'SETTING PRINTER'
